@@ -1051,17 +1051,47 @@
   // 17. CONTACT FORM SUBMISSION
   // ═══════════════════════════════════════════════════
   const cForm = document.getElementById('contact-form');
-  if(cForm) {
+  const cBtn = cForm ? cForm.querySelector('.submit-btn') : null;
+  if(cForm && cBtn) {
     cForm.onsubmit = (e) => {
       e.preventDefault();
+      
       const n = document.getElementById('cf-name').value;
+      const email = document.getElementById('cf-email').value;
       const m = document.getElementById('cf-msg').value;
-      window.location.href = `mailto:anshsomani05@gmail.com?subject=Contact from ${encodeURIComponent(n)}&body=${encodeURIComponent(m)}`;
-      cForm.reset();
-      showToast('Opening mail client...');
+      
+      const originalText = cBtn.innerHTML;
+      cBtn.innerHTML = 'SENDING...';
+      cBtn.style.opacity = '0.7';
+
+      fetch("https://formsubmit.co/ajax/anshsomani05@gmail.com", {
+          method: "POST",
+          headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+              name: n,
+              email: email,
+              message: m,
+              _subject: "New Contact Form Submission from Portfolio!"
+          })
+      })
+      .then(response => response.json())
+      .then(data => {
+          showToast('Message sent successfully!');
+          cForm.reset();
+          cBtn.innerHTML = originalText;
+          cBtn.style.opacity = '1';
+      })
+      .catch(error => {
+          showToast('Failed to send. Try again later.');
+          cBtn.innerHTML = originalText;
+          cBtn.style.opacity = '1';
+      });
     };
     // Make submit button magnetic
-    magnetize(cForm.querySelector('.submit-btn'), .15);
+    magnetize(cBtn, .15);
   }
 
   </script>
