@@ -992,10 +992,12 @@
   });
 
   // ═══════════════════════════════════════════════════
-  // 14. TERMINAL
+  // 14. TERMINAL (Kept for future use, but button now scrolls to contact)
   // ═══════════════════════════════════════════════════
   const tov=document.getElementById('term-ov'),tb=document.getElementById('tb'),ti=document.getElementById('ti');
-  document.getElementById('term-btn').onclick=()=>{tov.classList.add('on');setTimeout(()=>ti.focus(),300)};
+  document.getElementById('term-btn').onclick=()=>{
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  };
   tov.onclick=e=>{if(e.target===tov)tov.classList.remove('on')};
   const cmds={
     help:'Commands:\n  <span class="hl">about</span> · <span class="hl">skills</span> · <span class="hl">projects</span> · <span class="hl">achievements</span>\n  <span class="hl">education</span> · <span class="hl">contact</span> · <span class="hl">clear</span> · <span class="hl">exit</span>',
