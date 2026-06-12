@@ -923,6 +923,20 @@
         playPromise.catch(() => {
           isPlaying = false;
           musicBtn.innerHTML = '🔇 Music';
+
+          // Invisible interaction unlocker (like lusion.co)
+          const unlockAudio = () => {
+            if(!isPlaying && bgMusic) {
+              bgMusic.play().then(() => {
+                isPlaying = true;
+                musicBtn.innerHTML = '🔊 Music';
+              }).catch(e => console.log(e));
+            }
+            document.removeEventListener('pointerdown', unlockAudio);
+            document.removeEventListener('keydown', unlockAudio);
+          };
+          document.addEventListener('pointerdown', unlockAudio);
+          document.addEventListener('keydown', unlockAudio);
         });
       }
     });
