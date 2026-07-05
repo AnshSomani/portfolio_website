@@ -44,14 +44,6 @@
     .pl-bar{width:180px;height:2px;background:rgba(255,255,255,.06);margin-top:20px;border-radius:2px;overflow:hidden}
     .pl-bar-fill{height:100%;width:0;background:var(--accent);border-radius:2px;transition:width .1s}
 
-    /* ═══ SVG DECORATIVE LINES (DrawSVG) ═══ */
-    .svg-deco{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
-    .svg-deco svg{width:100%;height:100%}
-    .draw-line{stroke:rgba(200,255,0,.22);stroke-width:1.2;fill:none;stroke-dasharray:2000;stroke-dashoffset:2000;filter:drop-shadow(0 0 6px rgba(200,255,0,.15))}
-    .draw-line-thin{stroke:rgba(200,255,0,.12);stroke-width:.6;fill:none;stroke-dasharray:2500;stroke-dashoffset:2500}
-    .draw-circle{stroke:rgba(200,255,0,.18);stroke-width:1;fill:none;stroke-dasharray:1200;stroke-dashoffset:1200;filter:drop-shadow(0 0 4px rgba(200,255,0,.1))}
-    .draw-diamond{stroke:rgba(200,255,0,.14);stroke-width:.8;fill:none;stroke-dasharray:800;stroke-dashoffset:800}
-
     /* ═══ NAV ═══ */
     nav{position:fixed;top:0;left:0;right:0;padding:24px 48px;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(10,10,10,0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.05);opacity:0;transition:opacity 1s ease 1.8s}
     nav.vis{opacity:1}
@@ -70,12 +62,12 @@
     #c3d{position:fixed;inset:0;z-index:0}
 
     /* ═══ HERO ═══ */
-    .hero{position:relative;height:100vh;display:flex;align-items:flex-end;padding:0 48px 80px;z-index:1}
-    .hero-content{width:100%;max-width:1600px;margin:0 auto}
+    .hero{position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 48px 90px;z-index:1;text-align:center}
+    .hero-content{width:100%;max-width:900px}
     .hero-intro{font-size:.72rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--text2);margin-bottom:28px;overflow:hidden}
     .hero-intro span{display:inline-block;transform:translateY(100%);transition:transform 1s var(--ease) 2s}
     .hero-intro.vis span{transform:translateY(0)}
-    .hero-h1{font-family:var(--serif);font-size:clamp(3.8rem,9.5vw,9.5rem);font-weight:400;letter-spacing:-.04em;line-height:.9;margin-bottom:36px;color:var(--text)}
+    .hero-h1{font-family:var(--serif);font-size:clamp(3.2rem,8vw,7.5rem);font-weight:400;letter-spacing:-.04em;line-height:.92;margin-bottom:32px;color:var(--text)}
     .hero-h1 em{font-style:italic;color:var(--accent)}
     .hero-h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
     .hero-h1 .word span{display:inline-block;transform:translateY(115%);transition:transform 1.3s var(--ease)}
@@ -85,134 +77,125 @@
     .hero-h1.vis .word:nth-child(4) span{transition-delay:2.45s}
     .hero-h1.vis .word:nth-child(5) span{transition-delay:2.55s}
     .hero-h1.vis .word span{transform:translateY(0)}
-
-    /* Typewriter line */
-    .hero-typewriter{font-family:var(--mono);font-size:clamp(.8rem,1.4vw,1rem);color:var(--accent);margin-bottom:36px;height:1.6em;overflow:hidden;opacity:0;transition:opacity .5s ease 3s}
+    .hero-typewriter{font-family:var(--mono);font-size:clamp(.8rem,1.4vw,1rem);color:var(--accent);margin-bottom:32px;height:1.6em;overflow:hidden;opacity:0;transition:opacity .5s ease 3s}
     .hero-typewriter.vis{opacity:1}
     .tw-prefix{color:var(--text2)}
     .tw-text{border-right:2px solid var(--accent);padding-right:2px;animation:blink .8s step-end infinite}
     @keyframes blink{0%,100%{border-color:var(--accent)}50%{border-color:transparent}}
-
-    .hero-row{display:flex;justify-content:space-between;align-items:flex-end;opacity:0;transition:opacity 1s ease 3.2s}
+    .hero-row{display:flex;justify-content:center;align-items:center;gap:32px;opacity:0;transition:opacity 1s ease 3.2s}
     .hero-row.vis{opacity:1}
-    .hero-desc{font-size:.9rem;color:var(--text2);max-width:360px;line-height:1.8;font-weight:300}
-    .hero-scroll{display:flex;align-items:center;gap:16px;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2)}
+    .hero-desc{font-size:.85rem;color:var(--text2);max-width:420px;line-height:1.8;font-weight:300}
+    .hero-scroll{display:flex;align-items:center;gap:12px;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2)}
     .hero-scroll-line{width:56px;height:1px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
     .hero-scroll-line::after{content:'';position:absolute;inset:0;background:var(--accent);animation:scanLine 2.5s ease-in-out infinite}
     @keyframes scanLine{0%{transform:translateX(-100%)}50%{transform:translateX(0)}100%{transform:translateX(100%)}}
 
-    /* ═══ SECTION STYLES ═══ */
-    section{position:relative;z-index:1}
-    .sec-pad{padding:180px 48px;max-width:1600px;margin:0 auto}
-    .sec-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2);margin-bottom:24px;overflow:hidden}
-    .sec-label span{display:inline-block;transform:translateY(100%);opacity:0}
-    .sec-title{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,5.5rem);font-weight:400;letter-spacing:-.03em;line-height:1;margin-bottom:24px}
-    .sec-title .line{display:block;overflow:hidden}
-    .sec-title .line span{display:inline-block;transform:translateY(115%);opacity:0}
-    .sec-title em{font-style:italic;color:var(--accent)}
+    /* ═══ SPIRAL TRACK ═══ */
+    .spiral-track{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:15vh 40px 5vh}
 
-    /* Section divider SVG */
-    .sec-divider{position:relative;z-index:1;height:1px;overflow:visible;display:flex;align-items:center;justify-content:center}
-    .sec-divider svg{width:100%;height:60px;position:absolute;top:-30px}
-    .sec-divider-line{stroke:var(--border);stroke-width:.5;fill:none;stroke-dasharray:3000;stroke-dashoffset:3000}
+    /* Center line — visual anchor for pillar */
+    .spiral-center-line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(200,255,0,.06) 8%,rgba(200,255,0,.06) 92%,transparent);transform:translateX(-50%);pointer-events:none}
 
-    /* ═══ MARQUEE ═══ */
-    .marquee{overflow:hidden;padding:44px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);z-index:1;position:relative}
-    .marquee-inner{display:flex;gap:60px;animation:mq 20s linear infinite;width:max-content}
-    .marquee-inner span{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:400;font-style:italic;-webkit-text-stroke:1px rgba(255,255,255,.1);color:transparent;white-space:nowrap;transition:color .3s,-webkit-text-stroke-color .3s}
-    .marquee-inner span:hover{color:var(--accent);-webkit-text-stroke-color:var(--accent)}
-    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    /* ═══ SPIRAL CARDS ═══ */
+    .spiral-card{position:relative;width:480px;max-width:calc(50% - 60px);padding:44px;background:rgba(16,16,16,.88);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid var(--border);border-radius:24px;margin-bottom:28vh;opacity:0;transition:border-color .4s,box-shadow .4s;overflow:hidden}
+    .spiral-card::before{content:'';position:absolute;inset:0;border-radius:24px;background:radial-gradient(ellipse at var(--gx,30%) var(--gy,30%),rgba(200,255,0,.03),transparent 65%);opacity:0;transition:opacity .5s;pointer-events:none}
+    .spiral-card:hover::before{opacity:1}
+    .spiral-card:hover{border-color:rgba(200,255,0,.14);box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 60px rgba(200,255,0,.02)}
 
-    /* ═══ ABOUT ═══ */
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:120px;margin-top:80px}
-    .about-left{opacity:0;transform:translateY(60px)}
-    .about-p{font-size:1.05rem;color:var(--text3);line-height:1.85;font-weight:300}
-    .about-p strong{color:var(--text);font-weight:600}
-    .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:60px}
-    .stat{opacity:0;transform:translateY(30px)}
-    .stat-num{font-family:var(--serif);font-size:3.2rem;font-weight:400;color:var(--text);letter-spacing:-.03em}
-    .stat-lbl{font-size:.65rem;color:var(--text2);letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
-    .about-right{opacity:0;transform:translateY(60px)}
-    .about-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px;position:relative;overflow:hidden;transition:border-color .4s,transform .6s var(--ease)}
-    .about-card:hover{border-color:rgba(200,255,0,.12);transform:translateY(-4px)}
-    .about-card::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(200,255,0,.04),transparent 70%);pointer-events:none;transition:opacity .5s}
-    .about-card:hover::before{opacity:1.5}
-    .about-card h3{font-family:var(--serif);font-size:1.5rem;font-weight:400;font-style:italic;margin-bottom:20px}
-    .about-card p{color:var(--text2);line-height:1.7;font-size:.88rem;font-weight:300}
-    .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-    .about-tags span{padding:6px 16px;font-size:.68rem;letter-spacing:.05em;background:var(--accent-dim);color:var(--accent);border-radius:20px;border:1px solid rgba(200,255,0,.1);font-weight:500;transition:all .3s}
-    .about-tags span:hover{background:rgba(200,255,0,.12);border-color:rgba(200,255,0,.25);transform:translateY(-2px)}
+    /* Card sides */
+    .card-left{margin-right:auto;margin-left:0}
+    .card-right{margin-left:auto;margin-right:0}
 
-    /* ═══ SKILLS ═══ */
-    .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:80px;background:var(--border);border-radius:20px;overflow:hidden}
-    .sk{background:var(--bg);padding:44px 28px;cursor:none;position:relative;overflow:hidden;transition:background .5s}
-    .sk:hover{background:var(--surface)}
-    .sk::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(200,255,0,.06),transparent 60%);opacity:0;transition:opacity .4s}
-    .sk:hover::before{opacity:1}
-    .sk::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width .5s var(--ease)}
-    .sk:hover::after{width:100%}
-    .sk-icon{font-size:1.5rem;margin-bottom:16px;display:block;transition:transform .4s var(--ease)}
-    .sk:hover .sk-icon{transform:scale(1.2) rotate(-8deg)}
-    .sk-name{font-weight:600;font-size:.85rem;margin-bottom:6px;transition:color .3s}
-    .sk:hover .sk-name{color:var(--accent)}
-    .sk-sub{font-size:.7rem;color:var(--text2);line-height:1.5}
-    .sk{opacity:0;transform:translateY(40px)}
+    /* Connector line from card to center pillar */
+    .card-connector{position:absolute;top:50%;height:1px;pointer-events:none;opacity:0}
+    .card-left .card-connector{left:100%;width:min(200px,12vw);background:linear-gradient(90deg,rgba(200,255,0,.35),rgba(200,255,0,.03));transform-origin:left center;transform:scaleX(0)}
+    .card-right .card-connector{right:100%;width:min(200px,12vw);background:linear-gradient(270deg,rgba(200,255,0,.35),rgba(200,255,0,.03));transform-origin:right center;transform:scaleX(0)}
 
-    /* ═══ PROJECTS — Text-hover-image-reveal (Dennis Snellenberg) ═══ */
-    .proj-list{margin-top:80px}
-    .proj-item{display:grid;grid-template-columns:60px 1fr auto;align-items:center;padding:44px 0;border-bottom:1px solid var(--border);cursor:none;position:relative;transition:padding .4s var(--ease);text-decoration:none;color:var(--text)}
-    .proj-item:first-child{border-top:1px solid var(--border)}
-    .proj-item:hover{padding-left:24px}
-    .proj-num{font-family:var(--mono);font-size:.7rem;color:var(--text2);transition:color .3s}
-    .proj-item:hover .proj-num{color:var(--accent)}
-    .proj-info{display:flex;align-items:baseline;gap:24px}
-    .proj-name{font-family:var(--serif);font-size:clamp(2rem,4vw,3.8rem);font-weight:400;letter-spacing:-.02em;transition:color .3s,transform .4s var(--ease);-webkit-text-stroke:0px transparent}
-    .proj-item:hover .proj-name{color:var(--accent);transform:translateX(12px)}
-    .proj-cat{font-size:.68rem;color:var(--text2);letter-spacing:.12em;text-transform:uppercase;transition:opacity .3s}
-    .proj-arrow{font-size:1.5rem;color:var(--text2);transition:all .4s var(--ease)}
-    .proj-item:hover .proj-arrow{color:var(--accent);transform:translateX(10px) rotate(-45deg)}
-    .proj-item{opacity:0;transform:translateY(30px)}
+    /* Node dot at card edge */
+    .card-node{position:absolute;top:50%;width:8px;height:8px;border-radius:50%;background:var(--accent);transform:translateY(-50%) scale(0);box-shadow:0 0 14px rgba(200,255,0,.5),0 0 4px rgba(200,255,0,.8);z-index:2;pointer-events:none}
+    .card-left .card-node{right:-4px}
+    .card-right .card-node{left:-4px}
 
-    /* Floating project image reveal */
-    .proj-preview{position:fixed;width:400px;height:260px;border-radius:16px;overflow:hidden;pointer-events:none;z-index:900;opacity:0;transform:scale(.85) rotate(-2deg);transition:opacity .35s,transform .5s var(--ease);box-shadow:0 40px 80px rgba(0,0,0,.6)}
-    .proj-preview.vis{opacity:1;transform:scale(1) rotate(0deg)}
-    .proj-preview-bg{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;position:relative}
-    .proj-preview-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9));z-index:0}
-    .proj-preview-name{display:none;}
-    .proj-preview-desc{font-size:.72rem;color:var(--text3);text-align:center;line-height:1.5;max-width:280px;margin-bottom:16px;position:relative;z-index:1}
-    .proj-detail{position:absolute;bottom:0;left:0;right:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.9));z-index:2}
-    .proj-detail-tech{display:flex;flex-wrap:wrap;gap:4px}
-    .proj-detail-tech span{padding:3px 10px;font-family:var(--mono);font-size:.55rem;background:rgba(255,255,255,.08);color:var(--text3);border-radius:12px;backdrop-filter:blur(4px)}
+    /* Card header */
+    .card-header{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+    .card-index{font-family:var(--mono);font-size:.62rem;color:var(--accent);letter-spacing:.1em;opacity:.7}
+    .card-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2)}
 
-    /* ═══ ACHIEVEMENTS ═══ */
-    .ach-list{margin-top:80px}
-    .ach-item{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:28px 0;border-bottom:1px solid var(--border);cursor:none;position:relative;overflow:hidden}
-    .ach-item::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--accent-dim),transparent 60%);opacity:0;transform:translateX(-100%);transition:all .5s var(--ease)}
-    .ach-item:hover::before{opacity:1;transform:translateX(0)}
-    .ach-icon{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.03);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;position:relative;z-index:1;transition:all .4s var(--ease)}
-    .ach-item:hover .ach-icon{transform:scale(1.12) rotate(-5deg);background:var(--accent-dim);border-color:rgba(200,255,0,.2)}
-    .ach-text{position:relative;z-index:1}
-    .ach-title{font-weight:600;font-size:.95rem;margin-bottom:3px;transition:transform .4s var(--ease)}
-    .ach-item:hover .ach-title{transform:translateX(6px)}
-    .ach-desc{font-size:.75rem;color:var(--text2);font-weight:300}
-    .ach-badge{padding:5px 14px;font-family:var(--mono);font-size:.62rem;color:var(--text2);border:1px solid var(--border);border-radius:20px;position:relative;z-index:1;transition:all .3s}
-    .ach-item:hover .ach-badge{color:var(--accent);border-color:rgba(200,255,0,.25)}
-    .ach-item{opacity:0;transform:translateY(20px)}
+    /* Card title */
+    .card-title{font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,2rem);font-weight:400;letter-spacing:-.02em;line-height:1.15;margin-bottom:24px}
+    .card-title em{font-style:italic;color:var(--accent)}
+
+    /* ═══ ABOUT CARD ═══ */
+    .card-about-img{width:100%;height:320px;border-radius:16px;overflow:hidden;margin-bottom:22px;border:1px solid var(--border)}
+    .card-about-img img{width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:grayscale(100%) contrast(1.1);transition:filter .5s}
+    .card-about-img:hover img{filter:grayscale(0%)}
+    .card-about-text{font-size:.88rem;color:var(--text3);line-height:1.8;font-weight:300;margin-bottom:20px}
+    .card-about-text strong{color:var(--text);font-weight:600}
+    .card-about-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+    .card-about-tags span{padding:5px 14px;font-size:.62rem;letter-spacing:.05em;background:var(--accent-dim);color:var(--accent);border-radius:20px;border:1px solid rgba(200,255,0,.1);font-weight:500;transition:all .3s}
+    .card-about-tags span:hover{background:rgba(200,255,0,.12);border-color:rgba(200,255,0,.25);transform:translateY(-2px)}
+    .card-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-top:22px;border-top:1px solid var(--border);text-align:center}
+    .card-stat-num{font-family:var(--serif);font-size:1.55rem;font-weight:400;color:var(--text);letter-spacing:-.03em}
+    .card-stat-lbl{font-size:.55rem;color:var(--text2);letter-spacing:.15em;text-transform:uppercase;margin-top:2px}
+
+    /* ═══ SKILLS CARD ═══ */
+    .card-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:14px;overflow:hidden}
+    .sk-mini{background:rgba(10,10,10,.92);padding:16px 14px;display:flex;align-items:flex-start;gap:10px;transition:background .3s;cursor:none}
+    .sk-mini:hover{background:rgba(200,255,0,.04)}
+    .sk-mini-icon{font-size:1.1rem;line-height:1;flex-shrink:0;margin-top:1px}
+    .sk-mini-name{font-weight:600;font-size:.76rem;margin-bottom:2px;transition:color .3s}
+    .sk-mini:hover .sk-mini-name{color:var(--accent)}
+    .sk-mini-sub{font-size:.62rem;color:var(--text2);line-height:1.4}
+
+    /* ═══ PROJECT CARD ═══ */
+    .card-project-link{text-decoration:none;color:var(--text);display:block;cursor:none}
+    .card-proj-img-wrap{width:100%;height:190px;border-radius:14px;overflow:hidden;margin-bottom:18px;border:1px solid var(--border);position:relative}
+    .card-proj-img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .5s;filter:grayscale(40%) brightness(.85)}
+    .card-project-link:hover .card-proj-img{transform:scale(1.06);filter:grayscale(0%) brightness(1)}
+    .card-proj-info{display:flex;align-items:baseline;gap:14px;margin-bottom:10px}
+    .card-proj-name{font-family:var(--serif);font-size:1.6rem;font-weight:400;letter-spacing:-.02em;transition:color .3s}
+    .card-project-link:hover .card-proj-name{color:var(--accent)}
+    .card-proj-cat{font-size:.62rem;color:var(--text2);letter-spacing:.12em;text-transform:uppercase}
+    .card-proj-desc{font-size:.78rem;color:var(--text3);line-height:1.7;margin-bottom:16px;font-weight:300}
+    .card-proj-tech{display:flex;flex-wrap:wrap;gap:5px}
+    .card-proj-tech span{padding:4px 10px;font-family:var(--mono);font-size:.55rem;background:rgba(255,255,255,.05);color:var(--text3);border-radius:10px;border:1px solid rgba(255,255,255,.04)}
+    .card-proj-arrow{position:absolute;top:18px;right:18px;font-size:1.2rem;color:var(--text2);transition:all .4s var(--ease);opacity:0}
+    .card-project-link:hover .card-proj-arrow{color:var(--accent);transform:translate(4px,-4px);opacity:1}
+
+    /* ═══ ACHIEVEMENTS CARD ═══ */
+    .card-ach-item{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);transition:padding .3s}
+    .card-ach-item:last-child{border-bottom:none}
+    .card-ach-item:hover{padding-left:6px}
+    .card-ach-icon{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.03);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .4s var(--ease)}
+    .card-ach-item:hover .card-ach-icon{transform:scale(1.1) rotate(-5deg);background:var(--accent-dim);border-color:rgba(200,255,0,.2)}
+    .card-ach-title{font-weight:600;font-size:.82rem;margin-bottom:2px;transition:color .3s}
+    .card-ach-item:hover .card-ach-title{color:var(--accent)}
+    .card-ach-desc{font-size:.65rem;color:var(--text2);font-weight:300}
+    .card-ach-badge{padding:4px 10px;font-family:var(--mono);font-size:.55rem;color:var(--text2);border:1px solid var(--border);border-radius:14px;transition:all .3s}
+    .card-ach-item:hover .card-ach-badge{color:var(--accent);border-color:rgba(200,255,0,.2)}
 
     /* ═══ CONTACT ═══ */
-    .contact-section{border-top:1px solid var(--border)}
-    .contact-inner{max-width:1600px;margin:0 auto;padding:200px 48px}
-    .contact-big{font-family:var(--serif);font-size:clamp(3.5rem,9vw,9rem);font-weight:400;letter-spacing:-.04em;line-height:.92}
+    .contact-section{border-top:1px solid var(--border);position:relative;z-index:1}
+    .contact-inner{max-width:1600px;margin:0 auto;padding:180px 48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:80px;align-items:center}
+    .contact-big{font-family:var(--serif);font-size:clamp(3rem,8vw,8rem);font-weight:400;letter-spacing:-.04em;line-height:.92}
     .contact-big .line{display:block;overflow:hidden}
     .contact-big .line span{display:inline-block;transform:translateY(115%);opacity:0}
     .contact-big em{font-style:italic;color:var(--accent)}
-    .contact-row{display:flex;gap:80px;flex-wrap:wrap;margin-top:80px}
+    .contact-row{display:flex;gap:60px;flex-wrap:wrap;margin-top:60px}
     .contact-col{opacity:0;transform:translateY(30px)}
-    .cc-label{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2);margin-bottom:10px}
-    .cc-link{color:var(--text);text-decoration:none;font-size:1rem;font-weight:400;cursor:none;position:relative;transition:color .3s}
+    .cc-label{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2);margin-bottom:8px}
+    .cc-link{color:var(--text);text-decoration:none;font-size:.95rem;font-weight:400;cursor:none;position:relative;transition:color .3s}
     .cc-link:hover{color:var(--accent)}
     .cc-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width .4s var(--ease)}
     .cc-link:hover::after{width:100%}
+    .contact-form-wrap{flex:0 1 420px;width:100%}
+    .contact-form{background:var(--surface);padding:44px;border-radius:24px;border:1px solid var(--border)}
+    .contact-form h3{font-family:var(--serif);font-size:1.6rem;font-style:italic;font-weight:400;margin-bottom:28px;color:var(--text)}
+    .cf-input{width:100%;padding:14px 0;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:.85rem;margin-bottom:22px;outline:none;transition:border-color .3s}
+    .cf-input:focus{border-color:var(--accent)}
+    .cf-textarea{resize:none}
+    .submit-btn{background:var(--text);color:var(--bg);border:none;padding:16px 32px;font-size:.68rem;font-weight:600;letter-spacing:.1em;cursor:none;width:100%;justify-content:center;border-radius:40px;text-transform:uppercase;transition:all .3s}
+    .submit-btn:hover{background:var(--accent);color:var(--bg)}
 
     /* ═══ FOOTER ═══ */
     footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.7rem;color:var(--text2);z-index:1;position:relative}
@@ -235,21 +218,25 @@
     .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);background:var(--surface);border:1px solid var(--border);border-radius:40px;padding:10px 22px;font-size:.75rem;z-index:9600;display:flex;gap:8px;align-items:center;transition:transform .5s var(--ease)}
     .toast.show{transform:translateX(-50%) translateY(0)}
 
-    /* ═══ IMAGE PARALLAX CONTAINERS ═══ */
-    .parallax-img{overflow:hidden;border-radius:16px;position:relative}
-    .parallax-img img{width:100%;height:120%;object-fit:cover;position:absolute;top:-10%;left:0;will-change:transform}
-
     /* ═══ RESPONSIVE ═══ */
-    @media(max-width:1024px){.about-grid{grid-template-columns:1fr;gap:60px}.skills-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:1100px){
+      .spiral-card{width:420px;max-width:calc(50% - 40px);padding:36px}
+    }
+    @media(max-width:900px){
+      .spiral-card{width:100%;max-width:100%;margin-left:0!important;margin-right:0!important;margin-bottom:14vh}
+      .card-connector,.card-node,.spiral-center-line{display:none}
+      .card-stats{grid-template-columns:repeat(2,1fr)}
+      .spiral-track{padding:8vh 20px 2vh}
+    }
     @media(max-width:768px){
       nav{padding:16px 20px}.nav-links{display:none}
-      .sec-pad{padding:100px 20px}.hero{padding:0 20px 60px}
-      .contact-inner{padding:120px 20px}.contact-row{gap:32px}
-      .skills-grid{grid-template-columns:1fr}
-      .proj-info{flex-direction:column;gap:4px}
-      .proj-preview{display:none}
+      .hero{padding:0 20px 60px}
+      .contact-inner{padding:100px 20px}.contact-row{gap:28px;flex-direction:column}
+      .contact-form{padding:32px}
+      .card-skills-grid{grid-template-columns:1fr}
       footer{padding:20px;flex-direction:column;gap:6px;text-align:center}
       .cursor,.cursor-follow{display:none}
+      #c3d{opacity:.25}
     }
   </style>
 </head>
@@ -257,25 +244,6 @@
   <div class="noise"></div>
   <div class="cursor" id="cur"></div>
   <div class="cursor-follow" id="curf"></div>
-
-  <!-- SVG DECORATIVE LINES (DrawSVG effect) -->
-  <div class="svg-deco" id="svg-deco">
-    <svg viewBox="0 0 1440 900" preserveAspectRatio="none">
-      <!-- Primary flowing lines -->
-      <path class="draw-line" id="dline1" d="M-20,450 Q360,150 720,450 T1460,350"/>
-      <path class="draw-line" id="dline2" d="M-20,250 C200,50 400,650 720,300 S1200,50 1460,400"/>
-      <!-- Secondary thinner lines for depth -->
-      <path class="draw-line-thin" id="dline3" d="M-20,600 Q300,400 600,650 T1200,500 T1460,550"/>
-      <path class="draw-line-thin" id="dline4" d="M-20,150 Q400,350 800,100 S1100,400 1460,200"/>
-      <!-- Circles at key focal points -->
-      <circle class="draw-circle" id="dcircle1" cx="720" cy="450" r="160"/>
-      <circle class="draw-circle" id="dcircle2" cx="180" cy="200" r="90"/>
-      <circle class="draw-circle" id="dcircle3" cx="1260" cy="700" r="130"/>
-      <!-- Diamond shapes for geometric interest -->
-      <polygon class="draw-diamond" id="ddiamond1" points="720,280 820,450 720,620 620,450"/>
-      <polygon class="draw-diamond" id="ddiamond2" points="200,600 260,680 200,760 140,680"/>
-    </svg>
-  </div>
 
   <!-- PRELOADER -->
   <div class="preloader" id="preloader">
@@ -288,10 +256,10 @@
   <nav id="nav">
     <div class="nav-logo" id="logo">Ansh Somani</div>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#card-about">About</a></li>
+      <li><a href="#card-skills">Skills</a></li>
+      <li><a href="#card-proj-1">Work</a></li>
+      <li><a href="#card-achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display:flex;gap:16px;align-items:center;">
@@ -302,15 +270,6 @@
 
   <!-- 3D CANVAS -->
   <canvas id="c3d"></canvas>
-
-  <!-- PROJECT HOVER PREVIEW -->
-  <div class="proj-preview" id="proj-preview">
-    <div class="proj-preview-bg" id="proj-preview-bg">
-      <div class="proj-preview-name" id="proj-preview-name"></div>
-      <div class="proj-preview-desc" id="proj-preview-desc"></div>
-    </div>
-    <div class="proj-detail"><div class="proj-detail-tech" id="proj-detail-tech"></div></div>
-  </div>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -333,121 +292,174 @@
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee">
-    <div class="marquee-inner" id="mq-inner">
-      <span>Full-Stack Developer</span><span>✦</span><span>ICPC Regionalist</span><span>✦</span><span>React</span><span>✦</span><span>Node.js</span><span>✦</span><span>CF Expert</span><span>✦</span><span>LeetCode Knight</span><span>✦</span><span>MongoDB</span><span>✦</span>
-      <span>Full-Stack Developer</span><span>✦</span><span>ICPC Regionalist</span><span>✦</span><span>React</span><span>✦</span><span>Node.js</span><span>✦</span><span>CF Expert</span><span>✦</span><span>LeetCode Knight</span><span>✦</span><span>MongoDB</span><span>✦</span>
+  <!-- ═══ SPIRAL TRACK ═══ -->
+  <div class="spiral-track" id="spiral-track">
+    <div class="spiral-center-line"></div>
+
+    <!-- ══ 01 — ABOUT (LEFT) ══ -->
+    <div class="spiral-card card-left" id="card-about">
+      <div class="card-connector"></div>
+      <div class="card-node"></div>
+      <div class="card-header">
+        <span class="card-index">01</span>
+        <span class="card-label">About</span>
+      </div>
+      <div class="card-about-img">
+        <img src="Ansh somani image.jpeg" alt="Ansh Somani"/>
+      </div>
+      <h2 class="card-title">Turning complex ideas into <em>elegant</em> solutions.</h2>
+      <p class="card-about-text">I'm a <strong>B.Tech Computer Science</strong> student at <strong>IIIT Kota</strong> with a deep passion for building things that make a real impact. As an <strong>ICPC 2025 Regionalist</strong> and core member of Algorithmus, I've organized Endeavour 3.0 &amp; 4.0, boosting participation by 35%.</p>
+      <div class="card-about-tags"><span>Problem Solver</span><span>Team Player</span><span>Quick Learner</span><span>Open Source</span></div>
+      <div class="card-stats">
+        <div><div class="card-stat-num" data-count="9.4" data-dec="1">0</div><div class="card-stat-lbl">CGPA</div></div>
+        <div><div class="card-stat-num" data-count="1619">0</div><div class="card-stat-lbl">Codeforces</div></div>
+        <div><div class="card-stat-num" data-count="2015">0</div><div class="card-stat-lbl">LeetCode</div></div>
+        <div><div class="card-stat-num" data-count="1834">0</div><div class="card-stat-lbl">CodeChef</div></div>
+      </div>
     </div>
-  </div>
 
-  <!-- SVG SECTION DIVIDER -->
-  <div class="sec-divider">
-    <svg viewBox="0 0 1440 60"><path class="sec-divider-line" d="M0,30 Q360,5 720,30 T1440,30"/></svg>
-  </div>
+    <!-- ══ 02 — SKILLS (RIGHT) ══ -->
+    <div class="spiral-card card-right" id="card-skills">
+      <div class="card-connector"></div>
+      <div class="card-node"></div>
+      <div class="card-header">
+        <span class="card-index">02</span>
+        <span class="card-label">Skills</span>
+      </div>
+      <h2 class="card-title">Technologies I <em>wield.</em></h2>
+      <div class="card-skills-grid">
+        <div class="sk-mini"><span class="sk-mini-icon">⚛️</span><div><div class="sk-mini-name">React / TypeScript</div><div class="sk-mini-sub">Component-driven UI</div></div></div>
+        <div class="sk-mini"><span class="sk-mini-icon">🟢</span><div><div class="sk-mini-name">Node.js / Express</div><div class="sk-mini-sub">Backend APIs &amp; services</div></div></div>
+        <div class="sk-mini"><span class="sk-mini-icon">🐹</span><div><div class="sk-mini-name">Go / Echo</div><div class="sk-mini-sub">High-concurrency backends</div></div></div>
+        <div class="sk-mini"><span class="sk-mini-icon">💻</span><div><div class="sk-mini-name">C/C++ / Java / C#</div><div class="sk-mini-sub">Competitive programming</div></div></div>
+        <div class="sk-mini"><span class="sk-mini-icon">🗄️</span><div><div class="sk-mini-name">PostgreSQL / MongoDB</div><div class="sk-mini-sub">Relational &amp; NoSQL</div></div></div>
+        <div class="sk-mini"><span class="sk-mini-icon">⚡</span><div><div class="sk-mini-name">Redis / Docker</div><div class="sk-mini-sub">Caching &amp; containers</div></div></div>
+        <div class="sk-mini"><span class="sk-mini-icon">🤖</span><div><div class="sk-mini-name">AI / Prompt Eng.</div><div class="sk-mini-sub">LLM workflows &amp; agents</div></div></div>
+        <div class="sk-mini"><span class="sk-mini-icon">🐙</span><div><div class="sk-mini-name">Git / AWS / Postman</div><div class="sk-mini-sub">DevOps &amp; cloud</div></div></div>
+      </div>
+    </div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="sec-pad">
-      <div class="sec-label"><span>(01) — About</span></div>
-      <h2 class="sec-title">
-        <span class="line"><span>Turning complex ideas</span></span>
-        <span class="line"><span>into <em>elegant</em> solutions.</span></span>
-      </h2>
-      <div class="about-grid">
-        <div class="about-left">
-          <p class="about-p">I'm a <strong>B.Tech Computer Science</strong> student at <strong>IIIT Kota</strong> with a deep passion for building things that make a real impact. My foundation spans <strong>full-stack development</strong>, <strong>data structures &amp; algorithms</strong>, and <strong>system design</strong>.<br/><br/>As an <strong>ICPC 2025 Regionalist</strong> and core member of Algorithmus — the competitive programming club at IIIT Kota — I've organized Endeavour 3.0 &amp; 4.0, boosting participation by 35%.</p>
-          <div class="about-stats">
-            <div class="stat"><div class="stat-num" data-count="9.4" data-dec="1">0</div><div class="stat-lbl">CGPA</div></div>
-            <div class="stat"><div class="stat-num" data-count="1619">0</div><div class="stat-lbl">Codeforces</div></div>
-            <div class="stat"><div class="stat-num" data-count="2015">0</div><div class="stat-lbl">LeetCode</div></div>
-            <div class="stat"><div class="stat-num" data-count="1834">0</div><div class="stat-lbl">CodeChef</div></div>
-          </div>
+    <!-- ══ 03 — KESTREL (LEFT) ══ -->
+    <div class="spiral-card card-left" id="card-proj-0">
+      <div class="card-connector"></div>
+      <div class="card-node"></div>
+      <div class="card-header">
+        <span class="card-index">03</span>
+        <span class="card-label">Project</span>
+      </div>
+      <a href="https://github.com/AnshSomani/kestrel" target="_blank" class="card-project-link">
+        <div class="card-proj-img-wrap">
+          <img src="Kestrel.png" alt="Kestrel" class="card-proj-img"/>
+          <span class="card-proj-arrow">↗</span>
         </div>
-        <div class="about-right">
-          <div class="about-img-wrap" style="width:100%;height:auto;border-radius:24px;overflow:hidden;margin-bottom:32px;border:1px solid var(--border);background:rgba(255,255,255,0.02);">
-            <img src="Ansh somani image.jpeg" alt="Ansh Somani" style="width:100%;height:auto;display:block;filter:grayscale(100%) contrast(1.1);transition:filter 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%) contrast(1.1)'" />
-          </div>
-          <div class="about-card">
-            <h3>What drives me</h3>
-            <p>I thrive where creativity meets engineering — architecting full-stack apps, competing in ICPC, or mentoring juniors in CP. I'm a quick learner committed to continuous growth and delivering results that exceed expectations.</p>
-            <div class="about-tags"><span>Problem Solver</span><span>Team Player</span><span>Quick Learner</span><span>Open Source</span></div>
-          </div>
+        <div class="card-proj-info"><h3 class="card-proj-name">Kestrel</h3><span class="card-proj-cat">High-Performance Engine</span></div>
+        <p class="card-proj-desc">High-throughput webhook delivery engine processing 2M-event bursts at 1,652 deliveries/sec with zero dropped payloads.</p>
+        <div class="card-proj-tech"><span>Go</span><span>Echo</span><span>PostgreSQL</span><span>Redis</span><span>React</span><span>TypeScript</span></div>
+      </a>
+    </div>
+
+    <!-- ══ 04 — SKILLSWAP (RIGHT) ══ -->
+    <div class="spiral-card card-right" id="card-proj-1">
+      <div class="card-connector"></div>
+      <div class="card-node"></div>
+      <div class="card-header">
+        <span class="card-index">04</span>
+        <span class="card-label">Project</span>
+      </div>
+      <a href="https://github.com/AnshSomani/SkillSwap" target="_blank" class="card-project-link">
+        <div class="card-proj-img-wrap">
+          <img src="SkillSwap.png" alt="SkillSwap" class="card-proj-img"/>
+          <span class="card-proj-arrow">↗</span>
         </div>
+        <div class="card-proj-info"><h3 class="card-proj-name">SkillSwap</h3><span class="card-proj-cat">Full-Stack Platform</span></div>
+        <p class="card-proj-desc">Skill exchange marketplace with JWT auth, multi-skill swapping, request tracking and admin dashboard.</p>
+        <div class="card-proj-tech"><span>React</span><span>Vite</span><span>Tailwind</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>JWT</span></div>
+      </a>
+    </div>
+
+    <!-- ══ 05 — SECONDHAND (LEFT) ══ -->
+    <div class="spiral-card card-left" id="card-proj-2">
+      <div class="card-connector"></div>
+      <div class="card-node"></div>
+      <div class="card-header">
+        <span class="card-index">05</span>
+        <span class="card-label">Project</span>
+      </div>
+      <a href="https://github.com/AnshSomani/SecondHand" target="_blank" class="card-project-link">
+        <div class="card-proj-img-wrap">
+          <img src="SecondHand.png" alt="SecondHand" class="card-proj-img"/>
+          <span class="card-proj-arrow">↗</span>
+        </div>
+        <div class="card-proj-info"><h3 class="card-proj-name">SecondHand</h3><span class="card-proj-cat">E-Commerce</span></div>
+        <p class="card-proj-desc">Campus marketplace for college students to trade pre-owned items. Sustainable, local, zero-logistics.</p>
+        <div class="card-proj-tech"><span>React.js</span><span>Tailwind CSS</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>JWT</span></div>
+      </a>
+    </div>
+
+    <!-- ══ 06 — JOB ALERT (RIGHT) ══ -->
+    <div class="spiral-card card-right" id="card-proj-3">
+      <div class="card-connector"></div>
+      <div class="card-node"></div>
+      <div class="card-header">
+        <span class="card-index">06</span>
+        <span class="card-label">Project</span>
+      </div>
+      <a href="https://github.com/AnshSomani/Job_Alert" target="_blank" class="card-project-link">
+        <div class="card-proj-img-wrap">
+          <img src="Job Alert.png" alt="Job Alert" class="card-proj-img"/>
+          <span class="card-proj-arrow">↗</span>
+        </div>
+        <div class="card-proj-info"><h3 class="card-proj-name">Job Alert</h3><span class="card-proj-cat">Automation</span></div>
+        <p class="card-proj-desc">Automated job notification system with scraping pipelines and real-time preference-based filtering.</p>
+        <div class="card-proj-tech"><span>Python</span><span>Web Scraping</span><span>Automation</span><span>REST API</span></div>
+      </a>
+    </div>
+
+    <!-- ══ 07 — RENTAL MANAGEMENT (LEFT) ══ -->
+    <div class="spiral-card card-left" id="card-proj-4">
+      <div class="card-connector"></div>
+      <div class="card-node"></div>
+      <div class="card-header">
+        <span class="card-index">07</span>
+        <span class="card-label">Project</span>
+      </div>
+      <a href="https://github.com/AnshSomani/Rental-Management" target="_blank" class="card-project-link">
+        <div class="card-proj-img-wrap">
+          <img src="Rental Management.png" alt="Rental Management" class="card-proj-img"/>
+          <span class="card-proj-arrow">↗</span>
+        </div>
+        <div class="card-proj-info"><h3 class="card-proj-name">Rental Management</h3><span class="card-proj-cat">Hackathon Winner</span></div>
+        <p class="card-proj-desc">Property management platform built for Odoo Hackathon 2025 finals. Listings, tenants, payments, dashboard.</p>
+        <div class="card-proj-tech"><span>React.js</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Odoo</span></div>
+      </a>
+    </div>
+
+    <!-- ══ 08 — ACHIEVEMENTS (RIGHT) ══ -->
+    <div class="spiral-card card-right" id="card-achievements">
+      <div class="card-connector"></div>
+      <div class="card-node"></div>
+      <div class="card-header">
+        <span class="card-index">08</span>
+        <span class="card-label">Achievements</span>
+      </div>
+      <h2 class="card-title">Milestones &amp; <em>recognition.</em></h2>
+      <div>
+        <div class="card-ach-item"><div class="card-ach-icon">🏆</div><div><div class="card-ach-title">ICPC 2025 Regionalist</div><div class="card-ach-desc">Qualified for ICPC Asia West — Kanpur site</div></div><div class="card-ach-badge">2025</div></div>
+        <div class="card-ach-item"><div class="card-ach-icon">🟣</div><div><div class="card-ach-title">Expert on Codeforces</div><div class="card-ach-desc">Peak rating 1619 — Expert rank</div></div><div class="card-ach-badge">CF</div></div>
+        <div class="card-ach-item"><div class="card-ach-icon">⭐</div><div><div class="card-ach-title">4★ on CodeChef</div><div class="card-ach-desc">Rating 1834 · Global #4086 · India #3381</div></div><div class="card-ach-badge">CC</div></div>
+        <div class="card-ach-item"><div class="card-ach-icon">♞</div><div><div class="card-ach-title">Knight on LeetCode</div><div class="card-ach-desc">Rating 2015 — Knight badge holder</div></div><div class="card-ach-badge">LC</div></div>
+        <div class="card-ach-item"><div class="card-ach-icon">🛒</div><div><div class="card-ach-title">Semi-finalist — Flipkart Grid 7.0</div><div class="card-ach-desc">Top teams in India's premier e-commerce tech challenge</div></div><div class="card-ach-badge">2025</div></div>
+        <div class="card-ach-item"><div class="card-ach-icon">🏅</div><div><div class="card-ach-title">Finalist — Odoo Hackathon 2025</div><div class="card-ach-desc">Built Rental Management platform at grand finals</div></div><div class="card-ach-badge">2025</div></div>
+        <div class="card-ach-item"><div class="card-ach-icon">🔗</div><div><div class="card-ach-title">Grand Finalist — HackTheChain 3.0</div><div class="card-ach-desc">Top finisher at national blockchain hackathon</div></div><div class="card-ach-badge">2025</div></div>
+        <div class="card-ach-item"><div class="card-ach-icon">🧠</div><div><div class="card-ach-title">Microsoft AI Fluency Trophy</div><div class="card-ach-desc">GenAI fundamentals · prompt engineering · LLM workflows</div></div><div class="card-ach-badge">2026</div></div>
       </div>
     </div>
-  </section>
-
-  <div class="sec-divider">
-    <svg viewBox="0 0 1440 60"><path class="sec-divider-line" d="M0,30 C480,55 960,5 1440,30"/></svg>
   </div>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="sec-pad">
-      <div class="sec-label"><span>(02) — Skills</span></div>
-      <h2 class="sec-title">
-        <span class="line"><span>Technologies I</span></span>
-        <span class="line"><span><em>wield.</em></span></span>
-      </h2>
-      <div class="skills-grid" id="skills-grid">
-        <div class="sk"><span class="sk-icon">⚛️</span><div class="sk-name">React / React Native</div><div class="sk-sub">Component-driven UI</div></div>
-        <div class="sk"><span class="sk-icon">🟢</span><div class="sk-name">Node.js / Express</div><div class="sk-sub">Backend APIs &amp; services</div></div>
-        <div class="sk"><span class="sk-icon">🗄️</span><div class="sk-name">MongoDB / SQL</div><div class="sk-sub">Database design</div></div>
-        <div class="sk"><span class="sk-icon">💻</span><div class="sk-name">C/C++ / Java / Python</div><div class="sk-sub">Competitive programming</div></div>
-        <div class="sk"><span class="sk-icon">🤖</span><div class="sk-name">AI / Prompt Eng.</div><div class="sk-sub">LLM workflows &amp; agents</div></div>
-        <div class="sk"><span class="sk-icon">🌐</span><div class="sk-name">HTML / CSS / JS</div><div class="sk-sub">Pixel-perfect frontends</div></div>
-        <div class="sk"><span class="sk-icon">🐙</span><div class="sk-name">Git / AWS / Postman</div><div class="sk-sub">DevOps &amp; cloud</div></div>
-        <div class="sk"><span class="sk-icon">🎨</span><div class="sk-name">Tailwind / Bootstrap</div><div class="sk-sub">Rapid prototyping</div></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="sec-divider">
-    <svg viewBox="0 0 1440 60"><path class="sec-divider-line" d="M0,30 Q240,55 480,30 T960,30 T1440,30"/></svg>
-  </div>
-
-  <!-- PROJECTS -->
-  <section id="work">
-    <div class="sec-pad">
-      <div class="sec-label"><span>(03) — Selected Work</span></div>
-      <h2 class="sec-title">
-        <span class="line"><span>Recent</span></span>
-        <span class="line"><span><em>projects.</em></span></span>
-      </h2>
-      <div class="proj-list" id="proj-list"></div>
-    </div>
-  </section>
-
-  <div class="sec-divider">
-    <svg viewBox="0 0 1440 60"><path class="sec-divider-line" d="M0,30 C360,5 720,55 1080,30 S1440,10 1440,30"/></svg>
-  </div>
-
-  <!-- ACHIEVEMENTS -->
-  <section id="achievements">
-    <div class="sec-pad">
-      <div class="sec-label"><span>(04) — Achievements</span></div>
-      <h2 class="sec-title">
-        <span class="line"><span>Milestones &amp;</span></span>
-        <span class="line"><span><em>recognition.</em></span></span>
-      </h2>
-      <div class="ach-list">
-        <div class="ach-item"><div class="ach-icon">🏆</div><div class="ach-text"><div class="ach-title">ICPC 2025 Regionalist</div><div class="ach-desc">Qualified for ICPC Asia West — Kanpur site</div></div><div class="ach-badge">2025</div></div>
-        <div class="ach-item"><div class="ach-icon">🟣</div><div class="ach-text"><div class="ach-title">Expert on Codeforces</div><div class="ach-desc">Peak rating 1619 — Expert rank</div></div><div class="ach-badge">CF</div></div>
-        <div class="ach-item"><div class="ach-icon">⭐</div><div class="ach-text"><div class="ach-title">4★ on CodeChef</div><div class="ach-desc">Rating 1834 · Global #4086 · India #3381</div></div><div class="ach-badge">CC</div></div>
-        <div class="ach-item"><div class="ach-icon">♞</div><div class="ach-text"><div class="ach-title">Knight on LeetCode</div><div class="ach-desc">Rating 2015 — Knight badge holder</div></div><div class="ach-badge">LC</div></div>
-        <div class="ach-item"><div class="ach-icon">🛒</div><div class="ach-text"><div class="ach-title">Semi-finalist — Flipkart Grid 7.0</div><div class="ach-desc">Top teams in India's premier e-commerce tech challenge</div></div><div class="ach-badge">2025</div></div>
-        <div class="ach-item"><div class="ach-icon">🏅</div><div class="ach-text"><div class="ach-title">Finalist — Odoo Hackathon 2025</div><div class="ach-desc">Built Rental Management platform at the grand finals</div></div><div class="ach-badge">2025</div></div>
-        <div class="ach-item"><div class="ach-icon">🔗</div><div class="ach-text"><div class="ach-title">Grand Finalist — HackTheChain 3.0</div><div class="ach-desc">Top finisher at national blockchain hackathon</div></div><div class="ach-badge">2025</div></div>
-        <div class="ach-item"><div class="ach-icon">🧠</div><div class="ach-text"><div class="ach-title">Microsoft AI Fluency Trophy</div><div class="ach-desc">GenAI fundamentals · prompt engineering · LLM workflows</div></div><div class="ach-badge">2026</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
+  <!-- ═══ CONTACT ═══ -->
   <section id="contact" class="contact-section">
-    <div class="contact-inner" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:80px; align-items:center;">
-      <div style="flex:1; min-width:320px;">
+    <div class="contact-inner">
+      <div style="flex:1;min-width:300px;">
         <div class="contact-big">
           <span class="line"><span>Let's create</span></span>
           <span class="line"><span>something</span></span>
@@ -460,14 +472,13 @@
           <div class="contact-col"><div class="cc-label">Phone</div><a href="tel:+916376289557" class="cc-link">+91 63762 89557</a></div>
         </div>
       </div>
-      
-      <div class="contact-col" style="flex:0 1 420px; width:100%;">
-        <form id="contact-form" class="contact-form" style="background:var(--surface); padding:48px; border-radius:24px; border:1px solid var(--border);">
-          <h3 style="font-family:var(--serif); font-size:1.8rem; font-style:italic; font-weight:400; margin-bottom:32px; color:var(--text);">Send a message</h3>
-          <input type="text" id="cf-name" placeholder="Your Name" required style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--border); color:var(--text); font-family:var(--sans); font-size:.9rem; margin-bottom:24px; outline:none; transition:border-color .3s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"/>
-          <input type="email" id="cf-email" placeholder="Your Email" required style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--border); color:var(--text); font-family:var(--sans); font-size:.9rem; margin-bottom:24px; outline:none; transition:border-color .3s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"/>
-          <textarea id="cf-msg" placeholder="Your Message" rows="4" required style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--border); color:var(--text); font-family:var(--sans); font-size:.9rem; margin-bottom:32px; outline:none; resize:none; transition:border-color .3s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea>
-          <button type="submit" class="nav-pill submit-btn" style="background:var(--text); color:var(--bg); border:none; padding:16px 32px; font-size:.7rem; font-weight:600; letter-spacing:.1em; cursor:none; width:100%; justify-content:center;">SEND MESSAGE</button>
+      <div class="contact-form-wrap">
+        <form id="contact-form" class="contact-form">
+          <h3>Send a message</h3>
+          <input type="text" id="cf-name" placeholder="Your Name" required class="cf-input"/>
+          <input type="email" id="cf-email" placeholder="Your Email" required class="cf-input"/>
+          <textarea id="cf-msg" placeholder="Your Message" rows="4" required class="cf-input cf-textarea"></textarea>
+          <button type="submit" class="nav-pill submit-btn">SEND MESSAGE</button>
         </form>
       </div>
     </div>
@@ -483,7 +494,7 @@
     <div class="term-win">
       <div class="term-bar"><div class="td r"></div><div class="td y"></div><div class="td g"></div><span class="term-bar-t">ansh@portfolio ~ zsh</span></div>
       <div class="term-body" id="tb">
-        <div class="t-line"><span class="out">Welcome to Ansh's Terminal v4.0 — type <span class="hl">help</span></span></div>
+        <div class="t-line"><span class="out">Welcome to Ansh's Terminal v5.0 — type <span class="hl">help</span></span></div>
       </div>
       <div class="t-inp"><span class="pr">~$</span><input type="text" id="ti" spellcheck="false" autocomplete="off"/></div>
     </div>
@@ -495,150 +506,224 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
   /* ═════════════════════════════════════════════════════════════
-     ANSH SOMANI PORTFOLIO — ULTIMATE EDITION
-     Effects: Parallax, ScrollTrigger, DrawSVG, Typewriter,
-     Cursor-move, Text-hover-image, Image animation, 3D
+     ANSH SOMANI PORTFOLIO — SPIRAL PILLAR EDITION
+     Central 3D pillar · Helix particles · Spiral card layout
      ═════════════════════════════════════════════════════════════ */
 
   // ═══════════════════════════════════════════════════
-  // 1. THREE.JS — Immersive 3D Scene
+  // 1. THREE.JS — DIGITIZED CENTRAL PILLAR
   // ═══════════════════════════════════════════════════
-  const C=document.getElementById('c3d');
-  const renderer=new THREE.WebGLRenderer({canvas:C,alpha:true,antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.setSize(innerWidth,innerHeight);
-  const scene=new THREE.Scene();
-  const cam=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.1,200);
-  cam.position.z=8;
+  const C = document.getElementById('c3d');
+  const renderer = new THREE.WebGLRenderer({canvas:C, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setSize(innerWidth, innerHeight);
 
-  // Hero geometry: morphing TorusKnot
-  const heroGeo=new THREE.TorusKnotGeometry(1.6,.5,200,32,2,3);
-  const heroMat=new THREE.MeshStandardMaterial({color:0x1a1a1a,emissive:0x0d1a00,emissiveIntensity:.3,metalness:.7,roughness:.25,wireframe:true,transparent:true,opacity:.2});
-  const heroMesh=new THREE.Mesh(heroGeo,heroMat);
-  heroMesh.position.set(3,0,0);
-  scene.add(heroMesh);
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 200);
+  cam.position.z = 6;
 
-  // Inner glow
-  const heroInnerGeo=new THREE.TorusKnotGeometry(1.4,.4,100,16,2,3);
-  const heroInnerMat=new THREE.MeshStandardMaterial({color:0xc8ff00,emissive:0x1a2600,emissiveIntensity:.08,metalness:.9,roughness:.5,transparent:true,opacity:.03});
-  const heroInnerMesh=new THREE.Mesh(heroInnerGeo,heroInnerMat);
-  heroInnerMesh.position.copy(heroMesh.position);
-  scene.add(heroInnerMesh);
+  // Pillar group — rotates with scroll
+  const pillarGroup = new THREE.Group();
+  scene.add(pillarGroup);
 
-  // Mid-page: floating Icosahedron
-  const midGeo=new THREE.IcosahedronGeometry(1.2,1);
-  const midMat=new THREE.MeshStandardMaterial({color:0x222,emissive:0x111,wireframe:true,transparent:true,opacity:0});
-  const midMesh=new THREE.Mesh(midGeo,midMat);
-  midMesh.position.set(-4,-18,1);
-  scene.add(midMesh);
+  // 1a. Wireframe cylinder (octagonal cross-section, digitized look)
+  const cylGeo = new THREE.CylinderGeometry(0.26, 0.26, 10, 8, 35, true);
+  const edges = new THREE.EdgesGeometry(cylGeo);
+  const lineMat = new THREE.LineBasicMaterial({color:0xc8ff00, transparent:true, opacity:0.16});
+  const wireframe = new THREE.LineSegments(edges, lineMat);
+  pillarGroup.add(wireframe);
 
-  // Bottom: Octahedron near contact
-  const botGeo=new THREE.OctahedronGeometry(1.5,0);
-  const botMat=new THREE.MeshStandardMaterial({color:0x1a1a1a,emissive:0x0d1a00,emissiveIntensity:.2,wireframe:true,transparent:true,opacity:0});
-  const botMesh=new THREE.Mesh(botGeo,botMat);
-  botMesh.position.set(4,-38,0);
-  scene.add(botMesh);
+  // 1b. Inner glow cylinder
+  const innerGeo = new THREE.CylinderGeometry(0.22, 0.22, 10, 8, 1);
+  const innerMat = new THREE.MeshBasicMaterial({color:0xc8ff00, transparent:true, opacity:0.015, side:THREE.DoubleSide});
+  const innerCyl = new THREE.Mesh(innerGeo, innerMat);
+  pillarGroup.add(innerCyl);
 
-  // Particles
-  const pGeo=new THREE.BufferGeometry();
-  const pN=600;
-  const pP=new Float32Array(pN*3);
-  for(let i=0;i<pN*3;i++) pP[i]=(Math.random()-.5)*35;
-  pGeo.setAttribute('position',new THREE.BufferAttribute(pP,3));
-  const pMat=new THREE.PointsMaterial({color:0x444,size:.012,transparent:true,opacity:.3});
-  const particles=new THREE.Points(pGeo,pMat);
-  scene.add(particles);
+  // 1c. Double helix particles
+  const helixGroup = new THREE.Group();
+  pillarGroup.add(helixGroup);
+  const hCount = 500;
+  const hPos = new Float32Array(hCount * 3);
+  for(let i = 0; i < hCount; i++){
+    const t = i / hCount;
+    const y = (t - 0.5) * 10;
+    const helix = i % 2; // alternating between two helixes
+    const angle = t * Math.PI * 8 + helix * Math.PI;
+    const r = 0.40 + Math.sin(t * Math.PI) * 0.06;
+    hPos[i*3]   = Math.cos(angle) * r;
+    hPos[i*3+1] = y;
+    hPos[i*3+2] = Math.sin(angle) * r;
+  }
+  const helixGeo = new THREE.BufferGeometry();
+  helixGeo.setAttribute('position', new THREE.BufferAttribute(hPos, 3));
+  const helixMat = new THREE.PointsMaterial({color:0xc8ff00, size:0.018, transparent:true, opacity:0.45});
+  const helixPts = new THREE.Points(helixGeo, helixMat);
+  helixGroup.add(helixPts);
+
+  // 1d. Ring accents at section positions
+  const ringPositions = [-3.8, -2.2, -0.6, 0.6, 1.8, 3.0, 4.0];
+  const rings = [];
+  ringPositions.forEach(y => {
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(0.36, 0.007, 8, 48),
+      new THREE.MeshBasicMaterial({color:0xc8ff00, transparent:true, opacity:0.10})
+    );
+    ring.position.y = y;
+    ring.rotation.x = Math.PI / 2;
+    pillarGroup.add(ring);
+    rings.push(ring);
+  });
+
+  // 1e. Orbiting data cubes
+  const dataCubes = [];
+  for(let i = 0; i < 18; i++){
+    const s = 0.018 + Math.random() * 0.028;
+    const cube = new THREE.Mesh(
+      new THREE.BoxGeometry(s, s, s),
+      new THREE.MeshBasicMaterial({color:0xc8ff00, transparent:true, opacity:0.2 + Math.random() * 0.2})
+    );
+    cube.userData = {
+      angle: Math.random() * Math.PI * 2,
+      y: (Math.random() - 0.5) * 9,
+      radius: 0.55 + Math.random() * 0.5,
+      speed: 0.15 + Math.random() * 0.45,
+      ySpeed: (Math.random() - 0.3) * 0.12,
+      rotSpeed: 0.01 + Math.random() * 0.03
+    };
+    pillarGroup.add(cube);
+    dataCubes.push(cube);
+  }
+
+  // 1f. Ambient particles
+  const pN = 350;
+  const pP = new Float32Array(pN * 3);
+  for(let i = 0; i < pN * 3; i++) pP[i] = (Math.random() - 0.5) * 30;
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pP, 3));
+  const pMat = new THREE.PointsMaterial({color:0x555, size:0.01, transparent:true, opacity:0.22});
+  const ambientPts = new THREE.Points(pGeo, pMat);
+  scene.add(ambientPts);
 
   // Lights
-  const light1=new THREE.PointLight(0xc8ff00,.4,20);light1.position.set(5,5,5);scene.add(light1);
-  const light2=new THREE.PointLight(0xff6b35,.25,20);light2.position.set(-5,-3,4);scene.add(light2);
-  scene.add(new THREE.AmbientLight(0x111,.6));
+  const lt1 = new THREE.PointLight(0xc8ff00, 0.3, 18);
+  lt1.position.set(1, 5, 4); scene.add(lt1);
+  const lt2 = new THREE.PointLight(0xff6b35, 0.15, 18);
+  lt2.position.set(-1, -5, 4); scene.add(lt2);
+  scene.add(new THREE.AmbientLight(0x111, 0.5));
 
-  let mx=0,my=0,tmx=0,tmy=0;
-  document.addEventListener('mousemove',e=>{tmx=(e.clientX/innerWidth-.5)*2;tmy=(e.clientY/innerHeight-.5)*2});
+  // Mouse tracking for subtle parallax
+  let tmx = 0, tmy = 0, smx = 0, smy = 0;
+  document.addEventListener('mousemove', e => {
+    tmx = (e.clientX / innerWidth - 0.5) * 2;
+    tmy = (e.clientY / innerHeight - 0.5) * 2;
+  });
 
-  const clk=new THREE.Clock();
+  let scrollProgress = 0;
+  const clock = new THREE.Clock();
 
   function animate(){
     requestAnimationFrame(animate);
-    const t=clk.getElapsedTime();
-    mx+=(tmx-mx)*.04;my+=(tmy-my)*.04;
+    const t = clock.getElapsedTime();
 
-    // Hero mesh — morphing vertices + rotation
-    heroMesh.rotation.x=t*.08+my*.4;
-    heroMesh.rotation.y=t*.1+mx*.4;
-    heroMesh.rotation.z=t*.04;
-    heroInnerMesh.rotation.copy(heroMesh.rotation);
+    // Smooth mouse
+    smx += (tmx - smx) * 0.04;
+    smy += (tmy - smy) * 0.04;
 
-    // Vertex morphing
-    const pos=heroMesh.geometry.attributes.position;
-    const orig=heroGeo.attributes.position;
-    for(let i=0;i<pos.count;i++){
-      const ox=orig.getX(i),oy=orig.getY(i),oz=orig.getZ(i);
-      const n=Math.sin(ox*3+t*1.2)*Math.cos(oy*3+t*.8)*.08;
-      pos.setX(i,ox+n);pos.setY(i,oy+n*Math.sin(t*.6));pos.setZ(i,oz+n*Math.cos(t*.4));
-    }
-    pos.needsUpdate=true;
+    // Scroll-linked pillar rotation (2 full turns across page)
+    pillarGroup.rotation.y = scrollProgress * Math.PI * 4 + smx * 0.15;
 
-    // Mid geometry
-    midMesh.rotation.x=t*.06;midMesh.rotation.y=t*.08+mx*.2;
+    // Helix independent rotation
+    helixGroup.rotation.y += 0.004;
 
-    // Bottom geometry
-    botMesh.rotation.x=t*.04+my*.15;botMesh.rotation.y=t*.07+mx*.15;
+    // Pillar breathing
+    const breathe = 1 + Math.sin(t * 0.7) * 0.02;
+    wireframe.scale.set(breathe, 1, breathe);
+    innerCyl.scale.set(breathe * 0.95, 1, breathe * 0.95);
 
-    // Particles subtle rotation
-    particles.rotation.y=t*.005;
-    particles.rotation.x=t*.003;
+    // Data cubes orbit
+    dataCubes.forEach(c => {
+      const d = c.userData;
+      d.angle += d.speed * 0.016;
+      d.y += d.ySpeed * 0.016;
+      if(d.y > 4.8) d.y = -4.8;
+      if(d.y < -4.8) d.y = 4.8;
+      c.position.set(Math.cos(d.angle) * d.radius, d.y, Math.sin(d.angle) * d.radius);
+      c.rotation.x += d.rotSpeed;
+      c.rotation.z += d.rotSpeed * 0.7;
+    });
 
-    // Camera follows mouse + scroll
-    const scrollNorm=window.scrollY/(document.body.scrollHeight-innerHeight||1);
-    cam.position.x=mx*.5;
-    cam.position.y=-my*.5-scrollNorm*45;
-    cam.position.z=8-scrollNorm*2;
-    cam.lookAt(0,-scrollNorm*45,0);
+    // Ring pulsing
+    rings.forEach((ring, i) => {
+      const p = Math.sin(t * 1.2 + i * 0.9) * 0.06;
+      ring.scale.set(1 + p, 1 + p, 1 + p);
+      ring.material.opacity = 0.08 + Math.sin(t * 0.8 + i) * 0.04;
+    });
 
-    // Color shift
-    const h=(.22+Math.sin(t*.15)*.05);
-    heroMat.emissive.setHSL(h,.5,.06);
+    // Ambient particles drift
+    ambientPts.rotation.y = t * 0.003;
+    ambientPts.rotation.x = t * 0.001;
 
-    renderer.render(scene,cam);
+    // Camera subtle parallax
+    cam.position.x = smx * 0.3;
+    cam.position.y = -smy * 0.2;
+    cam.lookAt(0, 0, 0);
+
+    renderer.render(scene, cam);
   }
   animate();
-  addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+
+  addEventListener('resize', () => {
+    cam.aspect = innerWidth / innerHeight;
+    cam.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
 
   // ═══════════════════════════════════════════════════
-  // 2. CUSTOM CURSOR with Move Effect
+  // 2. CUSTOM CURSOR
   // ═══════════════════════════════════════════════════
-  const cur=document.getElementById('cur'),curf=document.getElementById('curf');
-  let cx=0,cy=0,cfx=0,cfy=0;
-  document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY});
+  const cur = document.getElementById('cur'), curf = document.getElementById('curf');
+  let cx = 0, cy = 0, cfx = 0, cfy = 0;
+  document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
   (function cursorLoop(){
-    cfx+=(cx-cfx)*.08;cfy+=(cy-cfy)*.08;
-    cur.style.transform=`translate(${cx-5}px,${cy-5}px)`;
-    curf.style.transform=`translate(${cfx-22}px,${cfy-22}px)`;
+    cfx += (cx - cfx) * 0.08; cfy += (cy - cfy) * 0.08;
+    cur.style.transform = `translate(${cx-5}px,${cy-5}px)`;
+    curf.style.transform = `translate(${cfx-22}px,${cfy-22}px)`;
     requestAnimationFrame(cursorLoop);
   })();
 
-  // Cursor state management
-  function setCursorHover(){curf.classList.add('big');curf.classList.remove('proj-hover')}
-  function setCursorProj(){curf.classList.add('proj-hover');curf.classList.remove('big')}
-  function setCursorNormal(){curf.classList.remove('big','proj-hover')}
+  function setCursorHover(){ curf.classList.add('big'); curf.classList.remove('proj-hover'); }
+  function setCursorProj(){ curf.classList.add('proj-hover'); curf.classList.remove('big'); }
+  function setCursorNormal(){ curf.classList.remove('big','proj-hover'); }
 
-  document.querySelectorAll('a,button,.nav-pill,.nav-links a,.cc-link').forEach(el=>{
-    el.addEventListener('mouseenter',setCursorHover);
-    el.addEventListener('mouseleave',setCursorNormal);
+  document.querySelectorAll('a,button,.nav-pill,.nav-links a,.cc-link,.card-about-tags span,.sk-mini,.card-ach-item').forEach(el => {
+    el.addEventListener('mouseenter', setCursorHover);
+    el.addEventListener('mouseleave', setCursorNormal);
+  });
+  document.querySelectorAll('.card-project-link').forEach(el => {
+    el.addEventListener('mouseenter', setCursorProj);
+    el.addEventListener('mouseleave', setCursorNormal);
+  });
+
+  // Card glow follows mouse
+  document.querySelectorAll('.spiral-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--gx', ((e.clientX - r.left) / r.width * 100) + '%');
+      card.style.setProperty('--gy', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
   });
 
   // ═══════════════════════════════════════════════════
   // 3. PRELOADER
   // ═══════════════════════════════════════════════════
-  const plNum=document.getElementById('pl-num');
-  const plBar=document.getElementById('pl-bar');
-  let pv=0;
-  const pi=setInterval(()=>{
-    pv+=Math.floor(Math.random()*5)+2;
-    if(pv>=100){pv=100;clearInterval(pi);
-      setTimeout(()=>{
+  const plNum = document.getElementById('pl-num');
+  const plBar = document.getElementById('pl-bar');
+  let pv = 0;
+  const pi = setInterval(() => {
+    pv += Math.floor(Math.random() * 5) + 2;
+    if(pv >= 100){
+      pv = 100; clearInterval(pi);
+      setTimeout(() => {
         document.getElementById('preloader').classList.add('done');
         document.getElementById('nav').classList.add('vis');
         document.getElementById('hero-intro').classList.add('vis');
@@ -646,16 +731,16 @@
         document.getElementById('hero-tw').classList.add('vis');
         document.getElementById('hero-row').classList.add('vis');
         startTypewriter();
-      },400);
+      }, 400);
     }
-    plNum.textContent=String(pv).padStart(3,'0');
-    plBar.style.width=pv+'%';
-  },30);
+    plNum.textContent = String(pv).padStart(3, '0');
+    plBar.style.width = pv + '%';
+  }, 30);
 
   // ═══════════════════════════════════════════════════
   // 4. TYPEWRITER EFFECT
   // ═══════════════════════════════════════════════════
-  const twPhrases=[
+  const twPhrases = [
     'console.log("Hello, World!");',
     'ICPC Regionalist 2025',
     'LeetCode Knight — Rating 2015',
@@ -665,250 +750,192 @@
     'git push origin master',
     'npm run build-the-future'
   ];
-  let twIdx=0,twChar=0,twDeleting=false,twTimeout;
-  const twEl=document.getElementById('tw-text');
+  let twIdx = 0, twChar = 0, twDeleting = false, twTimeout;
+  const twEl = document.getElementById('tw-text');
 
   function typewriterStep(){
-    const phrase=twPhrases[twIdx];
+    const phrase = twPhrases[twIdx];
     if(!twDeleting){
-      twEl.textContent=phrase.substring(0,twChar+1);
+      twEl.textContent = phrase.substring(0, twChar + 1);
       twChar++;
-      if(twChar>=phrase.length){
-        twDeleting=true;
-        twTimeout=setTimeout(typewriterStep,2200);return;
-      }
-      twTimeout=setTimeout(typewriterStep,50+Math.random()*40);
+      if(twChar >= phrase.length){ twDeleting = true; twTimeout = setTimeout(typewriterStep, 2200); return; }
+      twTimeout = setTimeout(typewriterStep, 50 + Math.random() * 40);
     } else {
-      twEl.textContent=phrase.substring(0,twChar-1);
+      twEl.textContent = phrase.substring(0, twChar - 1);
       twChar--;
-      if(twChar<=0){
-        twDeleting=false;
-        twIdx=(twIdx+1)%twPhrases.length;
-        twTimeout=setTimeout(typewriterStep,500);return;
-      }
-      twTimeout=setTimeout(typewriterStep,25);
+      if(twChar <= 0){ twDeleting = false; twIdx = (twIdx + 1) % twPhrases.length; twTimeout = setTimeout(typewriterStep, 500); return; }
+      twTimeout = setTimeout(typewriterStep, 25);
     }
   }
-  function startTypewriter(){setTimeout(typewriterStep,3400)}
+  function startTypewriter(){ setTimeout(typewriterStep, 3400); }
 
   // ═══════════════════════════════════════════════════
-  // 5. LENIS SMOOTH SCROLL
+  // 5. LENIS SMOOTH SCROLL + GSAP
   // ═══════════════════════════════════════════════════
   gsap.registerPlugin(ScrollTrigger);
-  const lenis=new Lenis({lerp:.07,smoothWheel:true,wheelMultiplier:.8});
-  lenis.on('scroll',ScrollTrigger.update);
-  gsap.ticker.add(t=>lenis.raf(t*1000));
+  const lenis = new Lenis({lerp:0.07, smoothWheel:true, wheelMultiplier:0.8});
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
 
+  // Update scroll progress for Three.js
+  lenis.on('scroll', ({scroll}) => {
+    scrollProgress = scroll / (document.body.scrollHeight - innerHeight || 1);
+  });
+
   // Anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.onclick=e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)lenis.scrollTo(t,{offset:-40})}
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.onclick = e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if(t) lenis.scrollTo(t, {offset: -80});
+    };
   });
 
   // ═══════════════════════════════════════════════════
-  // 6. DrawSVG ANIMATION (scroll-driven line drawing)
+  // 6. SPIRAL CARD SCROLL ANIMATIONS
   // ═══════════════════════════════════════════════════
-  // Primary lines — draw across the full page scroll
-  gsap.to('#dline1',{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:'body',start:'top top',end:'80% bottom',scrub:1}});
-  gsap.to('#dline2',{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:'body',start:'5% top',end:'90% bottom',scrub:1.5}});
-  // Secondary thinner lines — slightly delayed
-  gsap.to('#dline3',{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:'body',start:'10% top',end:'85% bottom',scrub:1.2}});
-  gsap.to('#dline4',{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:'body',start:'3% top',end:'75% bottom',scrub:1.8}});
-  // Circles — draw as their associated sections enter view
-  gsap.to('#dcircle1',{strokeDashoffset:0,ease:'power2.out',scrollTrigger:{trigger:'#about',start:'top 80%',end:'bottom 20%',scrub:1}});
-  gsap.to('#dcircle2',{strokeDashoffset:0,ease:'power2.out',scrollTrigger:{trigger:'#skills',start:'top 80%',end:'bottom 20%',scrub:1}});
-  gsap.to('#dcircle3',{strokeDashoffset:0,ease:'power2.out',scrollTrigger:{trigger:'#contact',start:'top 80%',end:'bottom 20%',scrub:1}});
-  // Diamonds — appear during projects and achievements
-  gsap.to('#ddiamond1',{strokeDashoffset:0,ease:'power2.out',scrollTrigger:{trigger:'#work',start:'top 80%',end:'bottom 30%',scrub:1}});
-  gsap.to('#ddiamond2',{strokeDashoffset:0,ease:'power2.out',scrollTrigger:{trigger:'#achievements',start:'top 80%',end:'bottom 30%',scrub:1}});
+  document.querySelectorAll('.spiral-card').forEach((card, i) => {
+    const isLeft = card.classList.contains('card-left');
+    const connector = card.querySelector('.card-connector');
+    const node = card.querySelector('.card-node');
 
-  // Section divider lines — draw on scroll into view
-  gsap.utils.toArray('.sec-divider-line').forEach(line=>{
-    gsap.to(line,{strokeDashoffset:0,duration:1.5,ease:'power2.out',scrollTrigger:{trigger:line.closest('.sec-divider'),start:'top 90%',toggleActions:'play none none reverse'}});
+    // Card entrance/exit — scrub-based so cards animate in AND out symmetrically
+    // Enter zone: card top crosses 85% → 65% of viewport (appear)
+    // Exit zone: card bottom crosses 35% → 15% of viewport (disappear)
+    const enterTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 88%',
+        end: 'top 55%',
+        scrub: 0.8
+      }
+    });
+    enterTl.fromTo(card,
+      { x: isLeft ? -160 : 160, opacity: 0, rotateY: isLeft ? 14 : -14, scale: 0.9 },
+      { x: 0, opacity: 1, rotateY: 0, scale: 1, ease: 'power2.out' }
+    );
+    if(connector) enterTl.fromTo(connector, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, ease: 'power2.out' }, 0.3);
+    if(node) enterTl.fromTo(node, { scale: 0 }, { scale: 1, ease: 'back.out(2)' }, 0.2);
+
+    // Exit zone — card disappears as it approaches the top of the viewport
+    const exitTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 30%',
+        end: 'top 0%',
+        scrub: 0.8
+      }
+    });
+    exitTl.to(card,
+      { x: isLeft ? -160 : 160, opacity: 0, rotateY: isLeft ? 14 : -14, scale: 0.9, ease: 'power2.in' }
+    );
+    if(connector) exitTl.to(connector, { scaleX: 0, opacity: 0, ease: 'power2.in' }, 0);
+    if(node) exitTl.to(node, { scale: 0, ease: 'power2.in' }, 0);
+
+    // Continuous parallax — subtle vertical drift for depth
+    gsap.to(card, {
+      yPercent: -12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.8
+      }
+    });
+
+    // Continuous 3D tilt — wrapping around the pillar feel
+    gsap.fromTo(card,
+      { rotateY: isLeft ? 5 : -5 },
+      {
+        rotateY: isLeft ? -3 : 3,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 2.5
+        }
+      }
+    );
   });
 
   // ═══════════════════════════════════════════════════
-  // 7. GSAP SCROLL-TRIGGERED SECTION ANIMATIONS
+  // 7. STAT COUNTER ANIMATION
   // ═══════════════════════════════════════════════════
-
-  // Section labels — slide up + fade in
-  gsap.utils.toArray('.sec-label span').forEach(el=>{
-    gsap.to(el,{y:0,opacity:1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el.closest('.sec-pad')||el.closest('.contact-inner'),start:'top 85%'}});
+  ScrollTrigger.create({
+    trigger: '#card-about',
+    start: 'top 80%',
+    once: true,
+    onEnter: () => {
+      document.querySelectorAll('.card-stat-num[data-count]').forEach(s => {
+        const tgt = parseFloat(s.dataset.count);
+        const dec = parseInt(s.dataset.dec || '0');
+        let v = 0;
+        const step = tgt / 50;
+        const iv = setInterval(() => {
+          v += step;
+          if(v >= tgt){ v = tgt; clearInterval(iv); }
+          s.textContent = dec > 0 ? v.toFixed(dec) : Math.floor(v);
+        }, 20);
+      });
+    }
   });
 
-  // Section titles — staggered line reveal
-  gsap.utils.toArray('.sec-title').forEach(title=>{
-    const lines=title.querySelectorAll('.line span');
-    gsap.to(lines,{y:0,opacity:1,duration:1.1,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:title,start:'top 85%'}});
+  // ═══════════════════════════════════════════════════
+  // 8. CONTACT SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════
+  const contactLines = document.querySelectorAll('.contact-big .line span');
+  gsap.to(contactLines, {
+    y: 0, opacity: 1, duration: 1.2, stagger: 0.12, ease: 'power3.out',
+    scrollTrigger: { trigger: '.contact-big', start: 'top 82%' }
   });
 
-  // Contact big text
-  const contactLines=document.querySelectorAll('.contact-big .line span');
-  gsap.to(contactLines,{y:0,opacity:1,duration:1.2,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.contact-big',start:'top 80%'}});
-
-  // Enhanced parallax on section titles
-  gsap.utils.toArray('.sec-title').forEach(t=>{
-    gsap.to(t,{yPercent:-20,ease:'none',scrollTrigger:{trigger:t,start:'top bottom',end:'bottom top',scrub:1.2}});
+  gsap.utils.toArray('.contact-col').forEach((el, i) => {
+    gsap.to(el, {
+      y: 0, opacity: 1, duration: 0.8, delay: 0.3 + i * 0.1, ease: 'power3.out',
+      scrollTrigger: { trigger: '.contact-row', start: 'top 88%' }
+    });
   });
 
   // Contact parallax
-  gsap.to('.contact-big',{yPercent:-10,ease:'none',scrollTrigger:{trigger:'.contact-big',start:'top bottom',end:'bottom top',scrub:1}});
-
-  // About left — fade/slide in
-  gsap.to('.about-left',{y:0,opacity:1,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.about-left',start:'top 85%'}});
-
-  // About right — fade/slide in with delay
-  gsap.to('.about-right',{y:0,opacity:1,duration:1.2,delay:.2,ease:'power3.out',scrollTrigger:{trigger:'.about-right',start:'top 85%'}});
-
-  // Stats — staggered entrance
-  gsap.utils.toArray('.stat').forEach((el,i)=>{
-    gsap.to(el,{y:0,opacity:1,duration:.7,delay:i*.1,ease:'power3.out',scrollTrigger:{trigger:'.about-stats',start:'top 85%',onEnter:()=>{
-      // Counter animation
-      el.querySelectorAll('.stat-num[data-count]').forEach(s=>{
-        if(s.dataset.done)return;s.dataset.done='1';
-        const tgt=parseFloat(s.dataset.count),dec=parseInt(s.dataset.dec||'0');
-        let v=0;const step=tgt/50;
-        const iv=setInterval(()=>{v+=step;if(v>=tgt){v=tgt;clearInterval(iv)}s.textContent=dec>0?v.toFixed(dec):Math.floor(v)},20);
-      });
-    }}});
-  });
-
-  // Skills grid — staggered with GSAP
-  gsap.utils.toArray('.sk').forEach((el,i)=>{
-    gsap.to(el,{y:0,opacity:1,duration:.6,delay:i*.06,ease:'power3.out',scrollTrigger:{trigger:'.skills-grid',start:'top 80%'}});
-  });
-
-  // Skill cards — mouse-follow glow
-  document.querySelectorAll('.sk').forEach(el=>{
-    el.addEventListener('mousemove',e=>{
-      const r=el.getBoundingClientRect();
-      el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
-      el.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
-    });
-    el.addEventListener('mouseenter',setCursorHover);
-    el.addEventListener('mouseleave',setCursorNormal);
-  });
-
-  // Project items — staggered entrance
-  // (created dynamically below, so we do this after creation)
-
-  // Achievement items — staggered
-  gsap.utils.toArray('.ach-item').forEach((el,i)=>{
-    gsap.to(el,{y:0,opacity:1,duration:.6,delay:i*.07,ease:'power3.out',scrollTrigger:{trigger:'.ach-list',start:'top 80%'}});
-    el.addEventListener('mouseenter',setCursorHover);
-    el.addEventListener('mouseleave',setCursorNormal);
-  });
-
-  // Contact columns — staggered entrance
-  gsap.utils.toArray('.contact-col').forEach((el,i)=>{
-    gsap.to(el,{y:0,opacity:1,duration:.8,delay:.3+i*.1,ease:'power3.out',scrollTrigger:{trigger:'.contact-row',start:'top 85%'}});
+  gsap.to('.contact-big', {
+    yPercent: -15, ease: 'none',
+    scrollTrigger: { trigger: '#contact', start: 'top bottom', end: 'bottom top', scrub: 1 }
   });
 
   // ═══════════════════════════════════════════════════
-  // 8. 3D SCROLL DEPTH — Lenis-linked opacity/position
+  // 9. HERO PARALLAX
   // ═══════════════════════════════════════════════════
-  lenis.on('scroll',({scroll})=>{
-    const norm=scroll/(document.body.scrollHeight-innerHeight||1);
-    // Hero fade out
-    if(heroMesh){
-      heroMesh.position.y=-norm*3;
-      heroInnerMesh.position.y=-norm*3;
-      const fade=Math.max(0,1-scroll/(innerHeight*.7));
-      heroMat.opacity=.2*fade;
-      heroInnerMat.opacity=.03*fade;
-    }
-    // Mid geometry visibility
-    if(midMesh){
-      const v=Math.max(0,Math.min(1,(norm-.15)/.2));
-      midMat.opacity=.12*v*Math.max(0,1-(norm-.45)/.15);
-    }
-    // Bottom geometry visibility
-    if(botMesh){
-      const v=Math.max(0,Math.min(1,(norm-.6)/.2));
-      botMat.opacity=.1*v;
-    }
-  });
+  gsap.to('.hero-h1', { yPercent: -30, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.8 }});
+  gsap.to('.hero-intro', { yPercent: -50, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.8 }});
+  gsap.to('.hero-desc', { yPercent: 80, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.8 }});
+  gsap.to('#hero-tw', { yPercent: 60, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.8 }});
 
   // ═══════════════════════════════════════════════════
-  // 9. MARQUEE SCROLL SPEED SYNC
+  // 10. MAGNETIC HOVER
   // ═══════════════════════════════════════════════════
-  const mqTrack=document.getElementById('mq-inner');
-  let mqBase=20;
-  lenis.on('scroll',({velocity})=>{
-    const speed=Math.max(4,mqBase-Math.abs(velocity)*.6);
-    if(mqTrack)mqTrack.style.animationDuration=speed+'s';
-  });
-
-  // ═══════════════════════════════════════════════════
-  // 10. PROJECTS — Text-hover-image-reveal
-  // ═══════════════════════════════════════════════════
-  const projects=[
-    {name:'SkillSwap',cat:'Full-Stack Platform',desc:'Skill exchange marketplace with JWT auth, multi-skill swapping, request tracking and admin dashboard.',tech:['React','Vite','Tailwind','Node.js','Express','MongoDB','JWT'],img:'SkillSwap.png',url:'https://github.com/AnshSomani/SkillSwap'},
-    {name:'SecondHand',cat:'E-Commerce',desc:'Campus marketplace for college students to trade pre-owned items. Sustainable, local, zero-logistics.',tech:['React.js','Tailwind CSS','Node.js','Express','MongoDB','JWT'],img:'SecondHand.png',url:'https://github.com/AnshSomani/SecondHand'},
-    {name:'Job Alert',cat:'Automation',desc:'Automated job notification system with scraping pipelines and real-time preference-based filtering.',tech:['Python','Web Scraping','Automation','REST API'],img:'Job Alert.png',url:'https://github.com/AnshSomani/Job_Alert'},
-    {name:'Rental Management',cat:'Hackathon Winner',desc:'Property management platform built for Odoo Hackathon 2025 finals. Listings, tenants, payments, dashboard.',tech:['React.js','Node.js','Express','MongoDB','Odoo'],img:'Rental Management.png',url:'https://github.com/AnshSomani/Rental-Management'}
-  ];
-
-  const projList=document.getElementById('proj-list');
-  const preview=document.getElementById('proj-preview');
-  const previewBg=document.getElementById('proj-preview-bg');
-  const previewName=document.getElementById('proj-preview-name');
-  const previewDesc=document.getElementById('proj-preview-desc');
-  const previewTech=document.getElementById('proj-detail-tech');
-
-  projects.forEach((p,i)=>{
-    const el=document.createElement('a');el.href=p.url;el.target='_blank';el.className='proj-item';
-    el.innerHTML=`<span class="proj-num">0${i+1}</span><div class="proj-info"><span class="proj-name">${p.name}</span><span class="proj-cat">${p.cat}</span></div><span class="proj-arrow">↗</span>`;
-
-    // Text-hover-image-reveal effect
-    el.addEventListener('mouseenter',()=>{
-      previewBg.style.background=`url('${p.img}')`;
-      previewBg.style.backgroundSize='cover';
-      previewBg.style.backgroundPosition='center';
-      previewName.textContent=p.name;
-      previewDesc.textContent=p.desc;
-      previewTech.innerHTML=p.tech.map(t=>`<span>${t}</span>`).join('');
-      preview.classList.add('vis');
-      setCursorProj();
-    });
-    el.addEventListener('mouseleave',()=>{
-      preview.classList.remove('vis');
-      setCursorNormal();
-    });
-    // Image follows cursor with offset and smooth lag
-    el.addEventListener('mousemove',e=>{
-      gsap.to(preview,{left:e.clientX+24,top:e.clientY-140,duration:.4,ease:'power2.out'});
-    });
-    projList.appendChild(el);
-  });
-
-  // Animate project items after creation
-  gsap.utils.toArray('.proj-item').forEach((el,i)=>{
-    gsap.to(el,{y:0,opacity:1,duration:.7,delay:i*.12,ease:'power3.out',scrollTrigger:{trigger:'.proj-list',start:'top 80%'}});
-  });
-
-  // ═══════════════════════════════════════════════════
-  // 11. MAGNETIC HOVER (Cursor-move effect)
-  // ═══════════════════════════════════════════════════
-  function magnetize(el,str=.3){
-    const onMove=e=>{
-      const r=el.getBoundingClientRect();
-      const x=(e.clientX-r.left-r.width/2)*str;
-      const y=(e.clientY-r.top-r.height/2)*str;
-      gsap.to(el,{x,y,duration:.4,ease:'power3.out'});
+  function magnetize(el, str = 0.3){
+    const onMove = e => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * str;
+      const y = (e.clientY - r.top - r.height / 2) * str;
+      gsap.to(el, {x, y, duration: 0.4, ease: 'power3.out'});
     };
-    const onLeave=()=>gsap.to(el,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'});
-    el.addEventListener('mousemove',onMove);
-    el.addEventListener('mouseleave',onLeave);
+    const onLeave = () => gsap.to(el, {x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,.4)'});
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('mouseleave', onLeave);
   }
-  document.querySelectorAll('.nav-pill,.nav-links a,.proj-arrow,.ach-badge,.ach-icon,.cc-link,.about-tags span').forEach(el=>magnetize(el,.25));
+  document.querySelectorAll('.nav-pill,.nav-links a,.card-proj-arrow,.card-ach-badge,.card-ach-icon,.cc-link,.card-about-tags span').forEach(el => magnetize(el, 0.2));
 
   // ═══════════════════════════════════════════════════
-  const musicBtn=document.getElementById('music-btn');
-  let bgMusic=null;
-  let isPlaying=true;
+  // 11. MUSIC PLAYER
+  // ═══════════════════════════════════════════════════
+  const musicBtn = document.getElementById('music-btn');
+  let bgMusic = null;
+  let isPlaying = true;
 
-  // Fetch as blob with a masked extension to hide from IDM
   fetch('bgm.dat')
     .then(res => res.blob())
     .then(blob => {
@@ -916,17 +943,13 @@
       bgMusic = new Audio(url);
       bgMusic.loop = true;
       bgMusic.volume = 0.3;
-
-      // Handle browser autoplay policy block smoothly
       const playPromise = bgMusic.play();
-      if (playPromise !== undefined) {
+      if(playPromise !== undefined){
         playPromise.catch(() => {
           isPlaying = false;
           musicBtn.innerHTML = '🔇 Music';
-
-          // Invisible interaction unlocker (like lusion.co)
           const unlockAudio = () => {
-            if(!isPlaying && bgMusic) {
+            if(!isPlaying && bgMusic){
               bgMusic.play().then(() => {
                 isPlaying = true;
                 musicBtn.innerHTML = '🔊 Music';
@@ -941,173 +964,120 @@
       }
     });
 
-  musicBtn.onclick=(e)=>{
+  musicBtn.onclick = (e) => {
     e.preventDefault();
-    if(!bgMusic) return; // Wait until loaded
+    if(!bgMusic) return;
     if(isPlaying){
       bgMusic.pause();
-      musicBtn.innerHTML='🔇 Music';
-    }else{
-      // Attempt to play, catch any browser autoplay blocks
+      musicBtn.innerHTML = '🔇 Music';
+    } else {
       bgMusic.play().catch(err => console.log("Audio play failed:", err));
-      musicBtn.innerHTML='🔊 Music';
+      musicBtn.innerHTML = '🔊 Music';
     }
-    isPlaying=!isPlaying;
+    isPlaying = !isPlaying;
   };
 
   // ═══════════════════════════════════════════════════
-  // 12. ENHANCED PARALLAX SCROLLING — highly visible depth layers
+  // 12. TERMINAL
   // ═══════════════════════════════════════════════════
-  // Hero elements — dramatic speed differences create strong parallax
-  gsap.to('.hero-desc',{yPercent:80,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.8}});
-  gsap.to('.hero-scroll',{yPercent:150,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.8}});
-  gsap.to('.hero-h1',{yPercent:-25,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.8}});
-  gsap.to('.hero-intro',{yPercent:-40,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.8}});
-  gsap.to('#hero-tw',{yPercent:50,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.8}});
+  const tov = document.getElementById('term-ov'), tb = document.getElementById('tb'), ti = document.getElementById('ti');
 
-  // About section — left/right columns at different speeds
-  gsap.to('.about-left',{yPercent:-20,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:1}});
-  gsap.to('.about-card',{yPercent:-35,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:1.2}});
-  gsap.to('.about-stats',{yPercent:-15,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:1}});
-
-  // Skills grid — rises noticeably
-  gsap.to('.skills-grid',{yPercent:-18,ease:'none',scrollTrigger:{trigger:'#skills',start:'top bottom',end:'bottom top',scrub:1}});
-
-  // Project list — each item at slightly different speed via stagger
-  gsap.utils.toArray('.proj-item').forEach((el,i)=>{
-    gsap.to(el,{yPercent:-10-(i*5),ease:'none',scrollTrigger:{trigger:'#work',start:'top bottom',end:'bottom top',scrub:1}});
-  });
-
-  // Achievement list — noticeable drift
-  gsap.to('.ach-list',{yPercent:-15,ease:'none',scrollTrigger:{trigger:'#achievements',start:'top bottom',end:'bottom top',scrub:1}});
-
-  // Marquee — strong parallax creates depth contrast
-  gsap.to('.marquee',{yPercent:-40,ease:'none',scrollTrigger:{trigger:'.marquee',start:'top bottom',end:'bottom top',scrub:.8}});
-
-  // Contact big text — dramatic slow float
-  gsap.to('.contact-big',{yPercent:-20,ease:'none',scrollTrigger:{trigger:'#contact',start:'top bottom',end:'bottom top',scrub:1}});
-  gsap.to('.contact-row',{yPercent:15,ease:'none',scrollTrigger:{trigger:'#contact',start:'top bottom',end:'bottom top',scrub:1.2}});
-
-  // ═══════════════════════════════════════════════════
-  // 13. IMAGE/ELEMENT SCROLL ANIMATIONS
-  // ═══════════════════════════════════════════════════
-  // Scale-up entrance for about card
-  ScrollTrigger.create({
-    trigger:'.about-card',
-    start:'top 88%',
-    onEnter:()=>{
-      gsap.from('.about-card',{scale:.92,opacity:0,duration:1.2,ease:'power3.out'});
-    }
-  });
-
-  // Achievement icons — spin on scroll
-  gsap.utils.toArray('.ach-icon').forEach(icon=>{
-    gsap.to(icon,{rotation:360,ease:'none',scrollTrigger:{trigger:icon,start:'top bottom',end:'bottom top',scrub:3}});
-  });
-
-  // ═══════════════════════════════════════════════════
-  // 14. TERMINAL (Kept for future use, but button now scrolls to contact)
-  // ═══════════════════════════════════════════════════
-  const tov=document.getElementById('term-ov'),tb=document.getElementById('tb'),ti=document.getElementById('ti');
-  document.getElementById('term-btn').onclick=()=>{
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-  };
-  tov.onclick=e=>{if(e.target===tov)tov.classList.remove('on')};
-  const cmds={
-    help:'Commands:\n  <span class="hl">about</span> · <span class="hl">skills</span> · <span class="hl">projects</span> · <span class="hl">achievements</span>\n  <span class="hl">education</span> · <span class="hl">contact</span> · <span class="hl">clear</span> · <span class="hl">exit</span>',
-    about:'👋 <span class="hl">Ansh Somani</span> — B.Tech CSE @ IIIT Kota\nFull-stack dev · ICPC Regionalist · CF Expert\nPassionate about clean code & impactful products.',
-    skills:'⚛️ React · Node · Express · MongoDB\n💻 C++ · Java · Python · SQL\n🤖 AI/ML · Prompt Engineering · LLM Agents\n🛠️ Git · AWS · Postman · Tailwind',
-    projects:'01 <span class="hl">SkillSwap</span> — Skill exchange marketplace\n02 <span class="hl">SecondHand</span> — Campus e-commerce\n03 <span class="hl">Job Alert</span> — Automated notifications\n04 <span class="hl">Rental Mgmt</span> — Odoo Hackathon finalist',
-    achievements:'🏆 ICPC 2025 Regionalist\n🟣 CF Expert (1619) · ⭐ CC 4★ (1834)\n♞ LC Knight (2015)\n🛒 Flipkart Grid Semi-finalist\n🏅 Odoo Hackathon Finalist',
-    education:'🎓 B.Tech CSE — IIIT Kota — 9.29 CGPA — 2023–27\n📜 12th CBSE — 88% · 10th CBSE — 95.8%',
-    contact:'📧 anshsomani05@gmail.com\n📱 +91 63762-89557\n🐙 github.com/AnshSomani\n💼 linkedin.com/in/ansh-somani'
-  };
-  ti.onkeydown=e=>{
-    if(e.key!=='Enter')return;
-    const c=ti.value.trim().toLowerCase();ti.value='';if(!c)return;
-    tb.innerHTML+=`<div class="t-line"><span class="pr">~$</span> ${c}</div>`;
-    if(c==='clear')tb.innerHTML='';
-    else if(c==='exit')tov.classList.remove('on');
-    else if(cmds[c])tb.innerHTML+=`<div class="t-line"><span class="out">${cmds[c].replace(/\n/g,'<br>')}</span></div>`;
-    else tb.innerHTML+=`<div class="t-line"><span class="out">not found: ${c}. try <span class="hl">help</span></span></div>`;
-    tb.scrollTop=tb.scrollHeight;
+  // "Available for work" scrolls to contact
+  document.getElementById('term-btn').onclick = () => {
+    document.getElementById('contact').scrollIntoView({behavior:'smooth'});
   };
 
-  // ═══════════════════════════════════════════════════
-  // 15. EASTER EGGS & TOAST
-  // ═══════════════════════════════════════════════════
-  const toast=document.getElementById('toast'),tmsg=document.getElementById('toast-msg');
-  function showToast(m){tmsg.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3500)}
-  const kon=[38,38,40,40,37,39,37,39,66,65];let ki=0;
-  document.addEventListener('keydown',e=>{if(e.keyCode===kon[ki]){ki++;if(ki===kon.length){showToast('🎮 Konami activated!');ki=0;document.body.style.transition='filter .5s';document.body.style.filter='hue-rotate(90deg)';setTimeout(()=>document.body.style.filter='',3000)}}else ki=0});
-  setTimeout(()=>showToast("☕ Still exploring? Let's connect."),60000);
-  let lc=0;document.getElementById('logo').onclick=()=>{lc++;if(lc===5){showToast('🥚 Built with precision + AI ✨');lc=0}};
+  tov.onclick = e => { if(e.target === tov) tov.classList.remove('on'); };
 
-  // ═══════════════════════════════════════════════════
-  // 16. SCROLL PROGRESS — SVG glow intensifies as user scrolls deeper
-  // ═══════════════════════════════════════════════════
-  lenis.on('scroll',({scroll})=>{
-    const progress=scroll/(document.body.scrollHeight-innerHeight||1);
-    // Lines glow brighter the deeper user scrolls — visible reward for exploring
-    document.querySelectorAll('.draw-line').forEach(l=>{
-      l.style.stroke=`rgba(200,255,0,${.15+progress*.2})`;
-    });
-    document.querySelectorAll('.draw-line-thin').forEach(l=>{
-      l.style.stroke=`rgba(200,255,0,${.08+progress*.12})`;
-    });
-    document.querySelectorAll('.draw-circle').forEach(c=>{
-      c.style.stroke=`rgba(200,255,0,${.12+progress*.16})`;
-    });
-    document.querySelectorAll('.draw-diamond').forEach(d=>{
-      d.style.stroke=`rgba(200,255,0,${.1+progress*.15})`;
-    });
+  const cmds = {
+    help: 'Commands:\n  <span class="hl">about</span> · <span class="hl">skills</span> · <span class="hl">projects</span> · <span class="hl">achievements</span>\n  <span class="hl">education</span> · <span class="hl">contact</span> · <span class="hl">clear</span> · <span class="hl">exit</span>',
+    about: '👋 <span class="hl">Ansh Somani</span> — B.Tech CSE @ IIIT Kota\nFull-stack dev · ICPC Regionalist · CF Expert\nPassionate about clean code & impactful products.',
+    skills: '⚛️ React · Node · Express · MongoDB\n💻 C++ · Java · Python · SQL\n🤖 AI/ML · Prompt Engineering · LLM Agents\n🛠️ Git · AWS · Postman · Tailwind',
+    projects: '01 <span class="hl">SkillSwap</span> — Skill exchange marketplace\n02 <span class="hl">SecondHand</span> — Campus e-commerce\n03 <span class="hl">Job Alert</span> — Automated notifications\n04 <span class="hl">Rental Mgmt</span> — Odoo Hackathon finalist',
+    achievements: '🏆 ICPC 2025 Regionalist\n🟣 CF Expert (1619) · ⭐ CC 4★ (1834)\n♞ LC Knight (2015)\n🛒 Flipkart Grid Semi-finalist\n🏅 Odoo Hackathon Finalist',
+    education: '🎓 B.Tech CSE — IIIT Kota — 9.29 CGPA — 2023–27\n📜 12th CBSE — 88% · 10th CBSE — 95.8%',
+    contact: '📧 anshsomani05@gmail.com\n📱 +91 63762-89557\n🐙 github.com/AnshSomani\n💼 linkedin.com/in/ansh-somani'
+  };
+
+  ti.onkeydown = e => {
+    if(e.key !== 'Enter') return;
+    const c = ti.value.trim().toLowerCase(); ti.value = ''; if(!c) return;
+    tb.innerHTML += `<div class="t-line"><span class="pr">~$</span> ${c}</div>`;
+    if(c === 'clear') tb.innerHTML = '';
+    else if(c === 'exit') tov.classList.remove('on');
+    else if(c === 'terminal' || c === 'open') tov.classList.add('on');
+    else if(cmds[c]) tb.innerHTML += `<div class="t-line"><span class="out">${cmds[c].replace(/\n/g,'<br>')}</span></div>`;
+    else tb.innerHTML += `<div class="t-line"><span class="out">not found: ${c}. try <span class="hl">help</span></span></div>`;
+    tb.scrollTop = tb.scrollHeight;
+  };
+
+  // Ctrl+` opens terminal
+  document.addEventListener('keydown', e => {
+    if(e.ctrlKey && e.key === '`'){ e.preventDefault(); tov.classList.toggle('on'); if(tov.classList.contains('on')) setTimeout(()=>ti.focus(),300); }
   });
 
   // ═══════════════════════════════════════════════════
-  // 17. CONTACT FORM SUBMISSION
+  // 13. TOAST & EASTER EGGS
+  // ═══════════════════════════════════════════════════
+  const toast = document.getElementById('toast'), tmsg = document.getElementById('toast-msg');
+  function showToast(m){ tmsg.textContent = m; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3500); }
+
+  // Konami code
+  const kon = [38,38,40,40,37,39,37,39,66,65]; let ki = 0;
+  document.addEventListener('keydown', e => {
+    if(e.keyCode === kon[ki]){
+      ki++;
+      if(ki === kon.length){
+        showToast('🎮 Konami activated!'); ki = 0;
+        document.body.style.transition = 'filter .5s';
+        document.body.style.filter = 'hue-rotate(90deg)';
+        setTimeout(() => document.body.style.filter = '', 3000);
+      }
+    } else ki = 0;
+  });
+
+  setTimeout(() => showToast("☕ Still exploring? Let's connect."), 60000);
+
+  let lc = 0;
+  document.getElementById('logo').onclick = () => { lc++; if(lc === 5){ showToast('🥚 Built with precision + AI ✨'); lc = 0; }};
+
+  // ═══════════════════════════════════════════════════
+  // 14. CONTACT FORM SUBMISSION
   // ═══════════════════════════════════════════════════
   const cForm = document.getElementById('contact-form');
   const cBtn = cForm ? cForm.querySelector('.submit-btn') : null;
-  if(cForm && cBtn) {
+  if(cForm && cBtn){
     cForm.onsubmit = (e) => {
       e.preventDefault();
-      
       const n = document.getElementById('cf-name').value;
       const email = document.getElementById('cf-email').value;
       const m = document.getElementById('cf-msg').value;
-      
       const originalText = cBtn.innerHTML;
       cBtn.innerHTML = 'SENDING...';
       cBtn.style.opacity = '0.7';
 
       fetch("https://formsubmit.co/ajax/anshsomani05@gmail.com", {
-          method: "POST",
-          headers: { 
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-              name: n,
-              email: email,
-              message: m,
-              _subject: "New Contact Form Submission from Portfolio!"
-          })
+        method: "POST",
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: n, email: email, message: m,
+          _subject: "New Contact Form Submission from Portfolio!"
+        })
       })
       .then(response => response.json())
       .then(data => {
-          showToast('Message sent successfully!');
-          cForm.reset();
-          cBtn.innerHTML = originalText;
-          cBtn.style.opacity = '1';
+        showToast('Message sent successfully!');
+        cForm.reset();
+        cBtn.innerHTML = originalText;
+        cBtn.style.opacity = '1';
       })
       .catch(error => {
-          showToast('Failed to send. Try again later.');
-          cBtn.innerHTML = originalText;
-          cBtn.style.opacity = '1';
+        showToast('Failed to send. Try again later.');
+        cBtn.innerHTML = originalText;
+        cBtn.style.opacity = '1';
       });
     };
-    // Make submit button magnetic
-    magnetize(cBtn, .15);
+    magnetize(cBtn, 0.15);
   }
 
   </script>
