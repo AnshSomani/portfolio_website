@@ -934,7 +934,20 @@
   // ═══════════════════════════════════════════════════
   const musicBtn = document.getElementById('music-btn');
   let bgMusic = null;
-  let isPlaying = true;
+  let isPlaying = false;
+  let userManuallyPaused = false;
+  
+  let unlockAudio; // Reference for the event listener
+
+  // After 25 seconds, remove all implicit unlock listeners
+  const unlockTimeout = setTimeout(() => { 
+    if(unlockAudio) {
+      document.removeEventListener('pointerdown', unlockAudio);
+      document.removeEventListener('keydown', unlockAudio);
+      document.removeEventListener('wheel', unlockAudio);
+      document.removeEventListener('touchmove', unlockAudio);
+    }
+  }, 25000);
 
   fetch('bgm.dat')
     .then(res => res.blob())
@@ -943,23 +956,38 @@
       bgMusic = new Audio(url);
       bgMusic.loop = true;
       bgMusic.volume = 0.3;
+      
       const playPromise = bgMusic.play();
       if(playPromise !== undefined){
-        playPromise.catch(() => {
+        playPromise.then(() => {
+          isPlaying = true;
+          musicBtn.innerHTML = '🔊 Music';
+          clearTimeout(unlockTimeout); // Stop timeout if it started successfully
+        }).catch(() => {
           isPlaying = false;
           musicBtn.innerHTML = '🔇 Music';
-          const unlockAudio = () => {
+          
+          unlockAudio = (e) => {
+            if(userManuallyPaused) return; // don't unlock if user turned it off
+            
             if(!isPlaying && bgMusic){
               bgMusic.play().then(() => {
                 isPlaying = true;
                 musicBtn.innerHTML = '🔊 Music';
-              }).catch(e => console.log(e));
+              }).catch(err => console.log(err));
             }
+            // Remove listeners once unlocked successfully
             document.removeEventListener('pointerdown', unlockAudio);
             document.removeEventListener('keydown', unlockAudio);
+            document.removeEventListener('wheel', unlockAudio);
+            document.removeEventListener('touchmove', unlockAudio);
+            clearTimeout(unlockTimeout);
           };
+          
           document.addEventListener('pointerdown', unlockAudio);
           document.addEventListener('keydown', unlockAudio);
+          document.addEventListener('wheel', unlockAudio, {passive: true});
+          document.addEventListener('touchmove', unlockAudio, {passive: true});
         });
       }
     });
@@ -970,9 +998,11 @@
     if(isPlaying){
       bgMusic.pause();
       musicBtn.innerHTML = '🔇 Music';
+      userManuallyPaused = true;
     } else {
       bgMusic.play().catch(err => console.log("Audio play failed:", err));
       musicBtn.innerHTML = '🔊 Music';
+      userManuallyPaused = false;
     }
     isPlaying = !isPlaying;
   };
